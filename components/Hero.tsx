@@ -44,12 +44,12 @@ const Hero: React.FC = () => {
           <div className="w-full lg:w-1/2 relative">
              <div className="relative z-10">
                 {/* Main Product/Lifestyle Image */}
-                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
+                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[3/4] lg:aspect-[4/5] mx-auto max-w-md lg:max-w-full">
                   <img 
-                    src="https://img.freepik.com/foto-gratis/gadis-asia-menari-merayakan-perasaan-bahagia-dan-ceria-tersenyum-lebar-berdiri-di-atas-latar-belakang-putih-studio_1258-88927.jpg?semt=ais_se_enriched&w=740&q=80" 
+                    src="https://i.pinimg.com/736x/52/2c/75/522c75b9e9a1ab43066724d16952d08f.jpg" 
                     alt="Wanita tersenyum cerah menggunakan produk Noufresh" 
                     referrerPolicy="no-referrer"
-                    className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                   />
                   
                   {/* Decorative striped overlay on image corner */}
