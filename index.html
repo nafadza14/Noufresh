@@ -1,81 +1,15 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noufresh - Senyum Cerah & Nafas Segar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: {
-                cyan: '#5bc6e5',
-                pink: '#ea6a92',
-              }
-            },
-            fontFamily: {
-              // Karla for Headings (replacing previous Serif slot for compatibility)
-              serif: ['"Karla"', 'sans-serif'],
-              // Nunito for Body (Sans)
-              sans: ['"Nunito"', 'sans-serif'],
-            },
-            backgroundImage: {
-              'striped-cyan': 'repeating-linear-gradient(45deg, #5bc6e5 0, #5bc6e5 2px, transparent 2px, transparent 12px)',
-              'striped-white': 'repeating-linear-gradient(45deg, rgba(255,255,255,0.4) 0, rgba(255,255,255,0.4) 2px, transparent 2px, transparent 12px)',
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      /* Custom scrollbar for better aesthetics */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #5bc6e5; 
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #4ab3d1; 
-      }
-      
-      .bg-pattern-dots {
-        background-image: radial-gradient(#5bc6e5 1px, transparent 1px);
-        background-size: 20px 20px;
-      }
-      
-      body {
-        font-family: 'Nunito', sans-serif;
-      }
-      
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Karla', sans-serif;
-      }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
-    "vite": "https://aistudiocdn.com/vite@^7.2.7",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
-  }
-}
-</script>
-</head>
+  </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
