@@ -21,10 +21,10 @@ export const translations = {
       scroll: "gulir untuk lebih lanjut"
     },
     about: {
-      badge: "Teknologi canggih",
-      title: "Kami menggunakan teknologi",
-      titleAccent: "paling mutakhir",
-      description: "Produk kami dikembangkan dengan teknologi enkapsulasi nano untuk memastikan efektivitas maksimal dan kesegaran yang tahan lama untuk kepercayaan diri harian Anda.",
+      badge: "Kenapa Noufresh berbeda dengan produk lain ?",
+      title: "Rahasianya:",
+      titleAccent: "Kesegaran yang Dilepas Pelan-Pelan",
+      description: "Produk kami dikembangkan dengan teknologi enkapsulasi nano untuk memastikan efektivitas maksimal dan kesegaran yang tahan lama untuk kepercayaan diri harian Anda. Bayangin peppermint oilnya dibungkus dalam kapsul super kecil. Pas kamu kumur atau semprot, kapsulnya pecah pelan pelan di mulut jadi segarnya keluar terus selama berjam-jam, bukan langsung habis.",
       stats: {
         feedback: "umpan balik positif",
         customers: "pelanggan senang",
@@ -58,6 +58,37 @@ export const translations = {
       badge: "Testimoni",
       title: "Apa kata",
       titleAccent: "pelanggan kami"
+    },
+    faq: {
+      badge: "FAQ",
+      title: "Pertanyaan umum",
+      titleAccent: "Yang Sering Ditanyakan",
+      items: [
+        {
+          q: "Apa bedanya Noufresh dengan mouthwash biasa?",
+          a: "Noufresh menggunakan teknologi nano-enkapsulasi peppermint oil berbasis kitosan TPP. Artinya zat aktif penyegar tidak langsung menguap, tapi dilepas secara perlahan di mulut. Hasilnya, kesegaran nafas bertahan 3–4 jam lebih lama dibanding mouthwash konvensional."
+        },
+        {
+          q: "Apakah aman untuk penggunaan sehari-hari?",
+          a: "Sangat aman. Noufresh diformulasikan tanpa alkohol, menggunakan bahan alami (peppermint oil murni dan kitosan organik), serta sudah terdaftar di BPOM. Cocok untuk penggunaan rutin tanpa efek samping pada mukosa mulut."
+        },
+        {
+          q: "Apakah Noufresh halal?",
+          a: "NouFresh 100% halal diaudit dan disertifikasi oleh BPJPH. Semua bahan baku dan cara pengolahannya sudah melalui audit ketat dan dinyatakan Halal."
+        },
+        {
+          q: "Kenapa rasanya tidak pedas seperti mouthwash lain?",
+          a: "Karena Noufresh tidak mengandung alkohol. Sensasi pedas dan terbakar pada mouthwash konvensional biasanya berasal dari kandungan alkohol tinggi. Noufresh memberikan sensasi segar yang lembut dan nyaman."
+        },
+        {
+          q: "Bagaimana cara order?",
+          a: "Kamu bisa order langsung melalui WhatsApp, atau melalui marketplace kami di Shopee, Tokopedia, dan TikTok Shop. Klik tombol 'Beli Sekarang' di halaman ini."
+        },
+        {
+          q: "Apa itu nano enkapsulasi?",
+          a: "Nano-enkapsulasi adalah teknologi pembungkusan zat aktif (dalam hal ini peppermint oil) dalam partikel berukuran nano menggunakan bahan pelindung (kitosan + TPP). Teknologi ini memungkinkan pelepasan zat aktif secara perlahan (controlled slow release) sehingga efeknya bertahan lebih lama."
+        }
+      ]
     },
     contact: {
       title: "Hubungi kami",
@@ -175,6 +206,37 @@ export const translations = {
       badge: "Testimonials",
       title: "What our",
       titleAccent: "customers say"
+    },
+    faq: {
+      badge: "FAQ",
+      title: "Frequently Asked",
+      titleAccent: "Questions",
+      items: [
+        {
+          q: "What makes Noufresh different from regular mouthwash?",
+          a: "Noufresh uses chitosan TPP-based peppermint oil nano-encapsulation technology. This means the active refreshing agent doesn't evaporate immediately but is released slowly in the mouth. As a result, breath freshness lasts 3-4 hours longer than conventional mouthwashes."
+        },
+        {
+          q: "Is it safe for daily use?",
+          a: "Very safe. Noufresh is formulated without alcohol, uses natural ingredients (pure peppermint oil and organic chitosan), and is registered with BPOM. It is suitable for routine use without side effects on the oral mucosa."
+        },
+        {
+          q: "Is Noufresh halal?",
+          a: "NouFresh is 100% halal, audited and certified by BPJPH. All raw materials and processing methods have undergone strict audits and are declared Halal."
+        },
+        {
+          q: "Why doesn't it taste spicy like other mouthwashes?",
+          a: "Because Noufresh does not contain alcohol. The spicy and burning sensation in conventional mouthwashes usually comes from high alcohol content. Noufresh provides a gentle and comfortable fresh sensation."
+        },
+        {
+          q: "How to order?",
+          a: "You can order directly via WhatsApp, or through our marketplaces on Shopee, Tokopedia, and TikTok Shop. Click the 'Shop Now' button on this page."
+        },
+        {
+          q: "What is nano encapsulation?",
+          a: "Nano-encapsulation is the technology of wrapping an active substance (in this case, peppermint oil) in nano-sized particles using a protective material (chitosan + TPP). This technology allows the active substance to be released slowly (controlled slow release) so the effect lasts longer."
+        }
+      ]
     },
     contact: {
       title: "Connect with us",

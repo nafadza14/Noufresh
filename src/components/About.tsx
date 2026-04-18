@@ -26,11 +26,11 @@ const About: React.FC = () => {
             <div className="inline-block px-4 py-1.5 bg-primary-cyan/10 text-primary-cyan rounded-full text-[14px] font-medium tracking-wider mb-6">
               {t.about.badge}
             </div>
-            <h2 className="text-[56px] lg:text-[64px] font-extrabold mb-8 leading-[1.1]">
+            <h2 className="text-[40px] md:text-[56px] lg:text-[64px] font-extrabold pb-4 leading-[1.1]">
               {t.about.title} <br />
               <span className="text-primary-cyan">{t.about.titleAccent}</span>
             </h2>
-            <p className="text-gray-500 text-[18px] font-normal mb-12 max-w-xl leading-relaxed">
+            <p className="text-gray-500 text-base md:text-[18px] font-normal mb-8 md:mb-12 max-w-xl leading-relaxed">
               {t.about.description}
             </p>
 

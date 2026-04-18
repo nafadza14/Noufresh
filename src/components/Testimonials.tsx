@@ -6,51 +6,32 @@ import { useLanguage } from '../context/LanguageContext';
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Jenkins",
-    role: "Marketing Director",
-    content: "Noufresh has completely changed my daily routine. I feel so much more confident in meetings knowing my breath is fresh all day.",
+    name: "Dina R.",
+    role: "Mahasiswi, PTN di Yogyakarta",
+    content: "Serius beda banget. Pakai pagi, sampai sore masih kerasa segar. Mouthwash lain mah udah hilang sebelum sampai kampus 😭",
     rating: 5,
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Software Engineer",
-    content: "The nano technology is real. It's not just a spray; it feels like it's actually cleaning my mouth. Highly recommend!",
+    name: "Rina K.",
+    role: "Pegawai BUMN",
+    content: "Mouthspray nya jadi best friendku di kantor. Tinggal semprot, langsung PD ngomong di depan rapat yang ga ada habis habisnya. Plus packaging nya lucu!",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
   },
   {
     id: 3,
-    name: "Elena Rodriguez",
-    role: "Yoga Instructor",
-    content: "I love that it's natural and effective. I keep one in my gym bag and one in my car. It's a lifesaver!",
+    name: "Bayu S.",
+    role: "Freelancer",
+    content: "Dulu suka minder kalau ngobrol dekat klien, padahal kan harus dapetin hatinya buat deal project. Sekarang habis kumur Noufresh pagi, gak pernah kepikiran soal nafas lagi, jadi PD.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"
   }
 ];
 
 const Testimonials: React.FC = () => {
-  const { t, language } = useLanguage();
-
-  // Simple content translation for testimonials if needed, but usually names/roles are fine.
-  // For a real app, these would come from a localized database.
-  const localizedTestimonials = testimonials.map(item => {
-    if (language === 'id') {
-      const idContent: Record<number, string> = {
-        1: "Noufresh telah benar-benar mengubah rutinitas harian saya. Saya merasa jauh lebih percaya diri dalam rapat mengetahui napas saya segar sepanjang hari.",
-        2: "Teknologi nano itu nyata. Ini bukan sekadar semprotan; rasanya seperti benar-benar membersihkan mulut saya. Sangat merekomendasikan!",
-        3: "Saya suka karena alami dan efektif. Saya simpan satu di tas olahraga dan satu di mobil saya. Sangat membantu!"
-      };
-      const idRoles: Record<string, string> = {
-        "Marketing Director": "Direktur Pemasaran",
-        "Software Engineer": "Insinyur Perangkat Lunak",
-        "Yoga Instructor": "Instruktur Yoga"
-      };
-      return { ...item, content: idContent[item.id], role: idRoles[item.role] || item.role };
-    }
-    return item;
-  });
+  const { t } = useLanguage();
 
   return (
     <section id="testimonial" className="py-24 px-6 bg-primary-light">
@@ -69,14 +50,14 @@ const Testimonials: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[48px] lg:text-[56px] font-extrabold text-primary-dark leading-[1.1]"
+            className="text-[40px] md:text-[48px] lg:text-[56px] font-extrabold text-primary-dark leading-[1.1]"
           >
             {t.testimonials.title} <span className="text-primary-cyan">{t.testimonials.titleAccent}</span>
           </motion.h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {localizedTestimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
               initial={{ opacity: 0, y: 30 }}

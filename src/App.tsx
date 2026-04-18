@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import ProductSection from './components/ProductSection';
 import ShopSection from './components/ShopSection';
 import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -69,6 +70,7 @@ const App: React.FC = () => {
           <ShopSection onAddToCart={addToCart} />
           <ProductSection onAddToCart={addToCart} />
           <Testimonials />
+          <FAQ />
           <Contact />
         </motion.main>
         

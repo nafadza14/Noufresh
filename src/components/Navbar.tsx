@@ -116,8 +116,8 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
             )}
           </button>
           
-          <a href="#shop">
-            <Button className="hidden md:block bg-primary-cyan text-white hover:bg-primary-dark rounded-full px-8 py-2.5 text-[15px] font-bold border-none shadow-lg">
+          <a href="#shop" className="hidden md:block">
+            <Button className="bg-primary-cyan text-white hover:bg-primary-dark rounded-full px-8 py-2.5 text-[15px] font-bold border-none shadow-lg">
               {t.nav.shopNow}
             </Button>
           </a>
