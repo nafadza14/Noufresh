@@ -18,11 +18,11 @@ const Contact: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl lg:text-7xl font-bold mb-8 leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 leading-tight tracking-tight">
               {t.contact.title} <br />
               <span className="text-primary-cyan">{t.contact.subtitle}</span>
             </h2>
-            <p className="text-gray-400 text-lg mb-12 max-w-xl leading-relaxed">
+            <p className="text-gray-400 text-sm md:text-base lg:text-lg mb-8 md:mb-12 max-w-xl leading-relaxed">
               {t.contact.description}
             </p>
 

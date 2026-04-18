@@ -94,7 +94,7 @@ const ShopSection: React.FC<ShopSectionProps> = ({ onAddToCart }) => {
             <div className="inline-block px-4 py-1.5 bg-primary-cyan/10 text-primary-cyan rounded-full text-[14px] font-medium tracking-wider mb-4">
               Shop Collection
             </div>
-            <h2 className="text-[40px] lg:text-[48px] font-extrabold text-primary-dark leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary-dark leading-tight tracking-tight">
               Choose your <span className="text-primary-cyan">freshness</span>
             </h2>
           </div>
@@ -139,9 +139,9 @@ const ShopSection: React.FC<ShopSectionProps> = ({ onAddToCart }) => {
                   {/* Product Info */}
                   <div className="flex-grow flex flex-col">
                     <div className="mb-4">
-                      <h3 className="text-lg font-bold text-primary-dark leading-tight mb-1">{product.name}</h3>
+                      <h3 className="text-base font-bold text-primary-dark leading-tight mb-1">{product.name}</h3>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-extrabold text-primary-cyan">
+                        <span className="text-base md:text-lg font-extrabold text-primary-cyan">
                           Rp{(selectedSizes[product.id] ? product.sizes?.find(s => s.id === selectedSizes[product.id])?.price : product.price)?.toLocaleString()}
                         </span>
                         {product.original_price && (

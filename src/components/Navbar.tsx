@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ShoppingBag, Menu, X, Globe } from 'lucide-react';
+import { ShoppingBag, Menu, X } from 'lucide-react';
 import { BRAND_NAME } from '../constants';
 import Button from './ui/Button';
 import { useLanguage } from '../context/LanguageContext';
@@ -14,7 +14,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
-  const { language, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
 
   const navItems = [
     { id: 'home', label: t.nav.home, href: '#home' },
@@ -44,10 +44,6 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'id' ? 'en' : 'id');
-  };
-
   return (
     <nav className="fixed top-6 w-full z-50 px-6">
       <div className="container mx-auto flex items-center justify-between">
@@ -62,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
             <img 
               src="https://i.pinimg.com/736x/5f/8d/a6/5f8da69a3469ae669dfeba86821bd87d.jpg" 
               alt={BRAND_NAME} 
-              className="h-10 w-auto" 
+              className="h-12 w-12 md:h-16 md:w-16 object-cover rounded-xl shadow-sm" 
               referrerPolicy="no-referrer"
             />
           </a>
@@ -95,15 +91,6 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-4"
         >
-          {/* Language Switcher */}
-          <button 
-            onClick={toggleLanguage}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 transition-all hover:bg-white/10 ${isScrolled ? 'text-primary-dark border-primary-dark/10' : 'text-white'}`}
-          >
-            <Globe className="w-4 h-4" />
-            <span className="text-[13px] font-bold uppercase">{language === 'id' ? 'ID' : 'EN'}</span>
-          </button>
-
           <button 
             onClick={onCartClick}
             className={`relative p-2 transition-colors ${isScrolled ? 'text-primary-dark' : 'text-white'} hover:text-primary-cyan`}
@@ -149,16 +136,6 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
               <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-gray-600 hover:text-primary-cyan px-4 py-2">{t.nav.contact}</a>
               
               <hr className="border-gray-100" />
-              <div className="flex items-center justify-between px-4">
-                <span className="text-gray-400 text-sm">Language</span>
-                <button 
-                  onClick={toggleLanguage}
-                  className="flex items-center gap-2 text-primary-dark font-bold"
-                >
-                  <Globe className="w-4 h-4" />
-                  {language === 'id' ? 'Indonesian' : 'English'}
-                </button>
-              </div>
               <a href="#shop" onClick={() => setIsMobileMenuOpen(false)} className="w-full">
                 <Button className="w-full bg-primary-cyan text-white border-none">{t.nav.shopNow}</Button>
               </a>

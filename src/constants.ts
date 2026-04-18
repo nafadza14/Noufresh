@@ -67,14 +67,18 @@ export const PRODUCTS: Product[] = [
     original_price: 65000,
     image: "https://i.pinimg.com/736x/6d/8f/c2/6d8fc2dc85d323248a4560a08880191a.jpg",
     tag: "Cooling",
-    ingredients: ["Water", "Glycerin", "Peppermint Oil", "Nano Chitosan"],
-    formulated_without: ["Alcohol", "Parabens", "SLS"],
-    how_to_use: "Rinse for 30 seconds after brushing.",
-    volume: "250ml",
-    benefits: ["Intense freshness", "Deep clean", "Long lasting"],
-    usage_instructions: "Use twice daily.",
-    safety_warning: "Do not swallow.",
-    stock: 300
+    ingredients: ["Water", "Glycerin", "Peppermint Oil", "Nano Encapsulated Freshness"],
+    formulated_without: ["Alcohol", "Sugar", "Artificial Colors"],
+    how_to_use: "Spray 1-2 times directly into mouth.",
+    volume: "30ml",
+    benefits: ["Intense freshness", "Deep clean", "Nano technology"],
+    usage_instructions: "Use as needed throughout the day.",
+    safety_warning: "Avoid contact with eyes.",
+    stock: 300,
+    sizes: [
+      { id: 'mini', label: 'Mini Size', volume: '10 ml', price: 25000 },
+      { id: 'full', label: 'Full Size', volume: '30 ml', price: 45000 }
+    ]
   },
   {
     id: 4,

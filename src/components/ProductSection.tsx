@@ -30,7 +30,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({ onAddToCart }) => {
           <div className="inline-block px-4 py-1.5 bg-primary-cyan/10 text-primary-cyan rounded-full text-[14px] font-medium tracking-wider mb-6">
             {t.products.badge}
           </div>
-          <h2 className="text-[48px] lg:text-[56px] font-extrabold text-primary-dark leading-[1.1]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary-dark leading-tight tracking-tight">
             {t.products.title} <span className="text-primary-cyan">{BRAND_NAME}?</span>
           </h2>
         </div>
@@ -44,8 +44,8 @@ const ProductSection: React.FC<ProductSectionProps> = ({ onAddToCart }) => {
             className="md:col-span-2 rounded-5xl bg-primary-dark p-12 text-white relative overflow-hidden flex flex-col justify-between min-h-[400px]"
           >
             <div className="relative z-10">
-              <h3 className="text-4xl font-bold mb-4">{t.products.card1.title}</h3>
-              <p className="text-gray-400 max-w-md">{t.products.card1.description}</p>
+              <h3 className="text-3xl lg:text-4xl font-bold mb-4">{t.products.card1.title}</h3>
+              <p className="text-gray-400 max-w-md text-sm md:text-base">{t.products.card1.description}</p>
             </div>
             <div className="relative z-10 flex items-center gap-4">
               <Button 

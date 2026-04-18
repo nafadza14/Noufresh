@@ -70,12 +70,12 @@ const Hero: React.FC = () => {
               Oralcare yang beneran works buat kamu
             </div>
             
-            <h1 className="text-4xl md:text-[42px] lg:text-[64px] font-extrabold text-white mb-4 md:mb-5 leading-[1.1] md:leading-[1.1] tracking-[-0.03em]">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 md:mb-5 leading-tight tracking-tight">
               Bye Bye Bau Mulut <br className="hidden md:block" />
-              <span className="text-primary-cyan text-3xl md:text-[42px] lg:text-[64px] leading-tight block mt-1 md:mt-2">Melindungi dari Pagi Sampai Sore Hari</span>
+              <span className="text-primary-cyan text-2xl md:text-3xl lg:text-4xl leading-tight block mt-1 md:mt-2">Melindungi dari Pagi Sampai Sore Hari</span>
             </h1>
             
-            <p className="text-gray-200 text-sm md:text-[15px] lg:text-[17px] font-normal mb-6 md:mb-8 max-w-md leading-relaxed md:leading-[1.6] opacity-90">
+            <p className="text-gray-200 text-sm md:text-base font-normal mb-6 md:mb-8 max-w-md leading-relaxed md:leading-[1.6] opacity-90">
               Noufresh pakai teknologi khusus biar nafas kamu segar lebih lama bukan cuma 30 menit lalu hilang. <br className="hidden md:block mt-2" />
               <span className="text-white font-medium mt-2 md:mt-1 inline-block">Tanpa alkohol I Tanpa rasa terbakar I Halal.</span>
             </p>

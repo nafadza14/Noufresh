@@ -10,7 +10,7 @@ const FAQItem: React.FC<{ question: string; answer: string; isOpen: boolean; onT
         onClick={onToggle}
         className="w-full px-6 py-5 flex justify-between items-center text-left"
       >
-        <span className="font-bold pr-4 lg:text-lg">{question}</span>
+        <span className="font-bold pr-4 text-base md:text-lg">{question}</span>
         <div className={`w-10 h-10 flex-shrink-0 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-primary-cyan text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}>
           {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
         </div>
@@ -44,7 +44,7 @@ const FAQ: React.FC = () => {
           <div className="inline-block px-4 py-1.5 bg-primary-cyan/10 text-primary-cyan rounded-full text-[14px] font-medium tracking-wider mb-6">
             {t.faq?.badge || "FAQ"}
           </div>
-          <h2 className="text-3xl md:text-[40px] lg:text-[48px] font-extrabold leading-[1.1] text-primary-dark">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-primary-dark">
             {t.faq?.title || "Pertanyaan umum"} <br />
             <span className="text-primary-cyan">{t.faq?.titleAccent || "Yang Sering Ditanyakan"}</span>
           </h2>

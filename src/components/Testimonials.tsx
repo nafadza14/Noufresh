@@ -50,7 +50,7 @@ const Testimonials: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[40px] md:text-[48px] lg:text-[56px] font-extrabold text-primary-dark leading-[1.1]"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary-dark leading-tight tracking-tight"
           >
             {t.testimonials.title} <span className="text-primary-cyan">{t.testimonials.titleAccent}</span>
           </motion.h2>
@@ -76,7 +76,7 @@ const Testimonials: React.FC = () => {
                 ))}
               </div>
 
-              <p className="text-gray-600 text-[18px] leading-relaxed mb-8 relative z-10">
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8 relative z-10">
                 "{testimonial.content}"
               </p>
 
