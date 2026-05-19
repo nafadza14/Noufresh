@@ -47,6 +47,34 @@ export default function ProblemSection() {
         </p>
       </div>
 
+      {/* Infinite Scrolling Photo Carousel */}
+      <div className="w-[100vw] relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden mb-24 mt-12 bg-gray-50/30 py-8">
+        <div className="animate-scrollX gap-4">
+          {[
+            "https://i.imgur.com/6c3b9311-a49a-42f5-8cb2-2a99a6e641c5.jpg",
+            "https://i.imgur.com/yX48gC3.jpg",
+            "https://i.imgur.com/GqPAvSx.jpg",
+            "https://i.imgur.com/Lco1wsC.jpg",
+            "https://i.imgur.com/lmlpXg8.jpg",
+            "https://i.imgur.com/2LqWJtE.jpg",
+            "https://i.imgur.com/6c3b9311-a49a-42f5-8cb2-2a99a6e641c5.jpg",
+            "https://i.imgur.com/yX48gC3.jpg",
+            "https://i.imgur.com/GqPAvSx.jpg",
+            "https://i.imgur.com/Lco1wsC.jpg",
+            "https://i.imgur.com/lmlpXg8.jpg",
+            "https://i.imgur.com/2LqWJtE.jpg"
+          ].map((img, i) => (
+            <div key={i} className="w-64 h-48 md:w-[360px] md:h-[240px] shrink-0 rounded-3xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all border border-gray-100 bg-white">
+              <img 
+                src={img} 
+                alt="Noufresh Showcase" 
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[0.85] group-hover:rounded-2xl origin-center"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {problems.map((problem, i) => (
           <motion.div

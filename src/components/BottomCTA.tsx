@@ -40,7 +40,7 @@ export default function BottomCTA() {
               className="relative w-full max-w-md mx-auto lg:max-w-none"
             >
               <img 
-                src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800"
+                src="https://i.imgur.com/3922842e-a488-4513-ab35-3e7d3d161e76.jpg"
                 alt="Noufresh Care Experience"
                 className="rounded-3xl shadow-2xl rotate-3 transform hover:rotate-0 transition-transform duration-700"
                 referrerPolicy="no-referrer"

@@ -240,3 +240,18 @@ p {
   box-shadow: 0 8px 32px rgba(0,0,0,0.08);
   border-color: #F3F4F6;
 }
+
+@keyframes scrollX {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scrollX {
+  animation: scrollX 35s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.animate-scrollX:hover {
+  animation-play-state: paused;
+}
