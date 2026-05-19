@@ -54,18 +54,18 @@ export default function ProblemSection() {
       <div className="w-[100vw] relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden mb-24 mt-12 bg-gray-50/30 py-8">
         <div className="animate-scrollX gap-4">
           {[
-            "https://i.imgur.com/wG4d6uJ.jpeg",
-            "https://i.imgur.com/yX48gC3.jpeg",
-            "https://i.imgur.com/GqPAvSx.jpeg",
-            "https://i.imgur.com/Lco1wsC.jpeg",
-            "https://i.imgur.com/lmlpXg8.jpeg",
-            "https://i.imgur.com/2LqWJtE.jpeg",
-            "https://i.imgur.com/wG4d6uJ.jpeg",
-            "https://i.imgur.com/yX48gC3.jpeg",
-            "https://i.imgur.com/GqPAvSx.jpeg",
-            "https://i.imgur.com/Lco1wsC.jpeg",
-            "https://i.imgur.com/lmlpXg8.jpeg",
-            "https://i.imgur.com/2LqWJtE.jpeg"
+            "/carousel-1.jpg",
+            "/carousel-2.jpg",
+            "/carousel-3.jpg",
+            "/carousel-4.jpg",
+            "/carousel-5.jpg",
+            "/carousel-6.jpg",
+            "/carousel-1.jpg",
+            "/carousel-2.jpg",
+            "/carousel-3.jpg",
+            "/carousel-4.jpg",
+            "/carousel-5.jpg",
+            "/carousel-6.jpg"
           ].map((img, i) => (
             <div 
               key={i} 

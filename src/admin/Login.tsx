@@ -23,7 +23,7 @@ export default function Login({ onLogin }: LoginProps) {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
         <div className="text-center mb-8">
-          <img loading="lazy" decoding="async" src="https://i.imgur.com/TPWEtiW.png" 
+          <img loading="lazy" decoding="async" src="/logo.png" 
             alt="Noufresh Logo" 
             className="h-8 mx-auto mb-6"
           />
