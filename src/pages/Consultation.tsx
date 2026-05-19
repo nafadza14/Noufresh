@@ -98,23 +98,42 @@ export default function Consultation() {
 
       {/* Trust */}
       <section className="section-container bg-white text-center pb-32">
-        <h3 className="text-gray-400 font-black tracking-[0.2em] text-[10px] uppercase mb-16 opacity-70">Bekerjasama & Terdaftar Secara Resmi</h3>
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-          <img 
-            src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/062013/pdgi_logo_1.jpg?itok=G0L20Ikm" 
-            alt="PDGI" 
-            className="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
-          />
-          <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Logo_Kementerian_Komunikasi_dan_Digital_Republik_Indonesia_%282024_full_version%29.svg/1280px-Logo_Kementerian_Komunikasi_dan_Digital_Republik_Indonesia_%282024_full_version%29.svg.png" 
-            alt="KOMDIGI" 
-            className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
-          />
-          <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/d/de/Logo_of_the_Ministry_of_Health_of_the_Republic_of_Indonesia.png" 
-            alt="KEMENKES" 
-            className="h-10 md:h-14 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
-          />
+        <div className="mb-24">
+          <h3 className="text-gray-400 font-black tracking-[0.2em] text-[10px] uppercase mb-12 opacity-70">Berpotensi bekerjasama dengan</h3>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+            <img 
+              src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/062013/pdgi_logo_1.jpg?itok=G0L20Ikm" 
+              alt="PDGI" 
+              className="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+            />
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Logo_Kementerian_Komunikasi_dan_Digital_Republik_Indonesia_%282024_full_version%29.svg/1280px-Logo_Kementerian_Komunikasi_dan_Digital_Republik_Indonesia_%282024_full_version%29.svg.png" 
+              alt="KOMDIGI" 
+              className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+            />
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/d/de/Logo_of_the_Ministry_of_Health_of_the_Republic_of_Indonesia.png" 
+              alt="KEMENKES" 
+              className="h-10 md:h-14 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+            />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-gray-400 font-black tracking-[0.2em] text-[10px] uppercase mb-2 opacity-70">Seluruh Produk Di Awasi Oleh</h3>
+          <p className="text-gray-900 font-bold mb-12">BPOM RI Dan BPJH Halal RI</p>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/id/thumb/a/a8/BADAN_POM.png/330px-BADAN_POM.png" 
+              alt="BPOM" 
+              className="h-16 md:h-20 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+            />
+            <img 
+              src="https://staging-bpjph.halal.go.id/images/logo_bpjph_halal.png" 
+              alt="Halal Indonesia" 
+              className="h-16 md:h-20 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+            />
+          </div>
         </div>
       </section>
     </div>
