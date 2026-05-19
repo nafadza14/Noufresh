@@ -78,6 +78,7 @@ export default function ProblemSection() {
                 src={img} 
                 alt="Noufresh Showcase" 
                 className="w-full h-full object-contain p-2 origin-center"
+                referrerPolicy="no-referrer"
               />
             </div>
           ))}
@@ -123,6 +124,7 @@ export default function ProblemSection() {
               src={selectedImage} 
               alt="Enlarged Showcase" 
               className="max-w-full max-h-full object-contain shadow-2xl cursor-default"
+              referrerPolicy="no-referrer"
               onClick={(e) => e.stopPropagation()}
             />
             <button 
