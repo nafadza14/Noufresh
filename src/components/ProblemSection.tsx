@@ -54,18 +54,18 @@ export default function ProblemSection() {
       <div className="w-[100vw] relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden mb-24 mt-12 bg-gray-50/30 py-8">
         <div className="animate-scrollX gap-4">
           {[
-            "https://i.imgur.com/6c3b9311-a49a-42f5-8cb2-2a99a6e641c5.jpg",
-            "https://i.imgur.com/yX48gC3.jpg",
-            "https://i.imgur.com/GqPAvSx.jpg",
-            "https://i.imgur.com/Lco1wsC.jpg",
-            "https://i.imgur.com/lmlpXg8.jpg",
-            "https://i.imgur.com/2LqWJtE.jpg",
-            "https://i.imgur.com/6c3b9311-a49a-42f5-8cb2-2a99a6e641c5.jpg",
-            "https://i.imgur.com/yX48gC3.jpg",
-            "https://i.imgur.com/GqPAvSx.jpg",
-            "https://i.imgur.com/Lco1wsC.jpg",
-            "https://i.imgur.com/lmlpXg8.jpg",
-            "https://i.imgur.com/2LqWJtE.jpg"
+            "https://i.imgur.com/wG4d6uJ.jpeg",
+            "https://i.imgur.com/yX48gC3.jpeg",
+            "https://i.imgur.com/GqPAvSx.jpeg",
+            "https://i.imgur.com/Lco1wsC.jpeg",
+            "https://i.imgur.com/lmlpXg8.jpeg",
+            "https://i.imgur.com/2LqWJtE.jpeg",
+            "https://i.imgur.com/wG4d6uJ.jpeg",
+            "https://i.imgur.com/yX48gC3.jpeg",
+            "https://i.imgur.com/GqPAvSx.jpeg",
+            "https://i.imgur.com/Lco1wsC.jpeg",
+            "https://i.imgur.com/lmlpXg8.jpeg",
+            "https://i.imgur.com/2LqWJtE.jpeg"
           ].map((img, i) => (
             <div 
               key={i} 
