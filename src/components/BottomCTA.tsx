@@ -41,8 +41,9 @@ export default function BottomCTA() {
             >
               <img loading="lazy" decoding="async" src="https://i.imgur.com/3922842e-a488-4513-ab35-3e7d3d161e76.jpg"
                 alt="Noufresh Care Experience"
-                className="rounded-3xl shadow-2xl rotate-3 transform hover:rotate-0 transition-transform duration-700"
+                className="w-full h-full object-contain bg-white rounded-3xl shadow-2xl rotate-3 transform hover:rotate-0 transition-transform duration-700"
                 referrerPolicy="no-referrer"
+                onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800"; }}
               />
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-mint-light/30 rounded-full blur-3xl"></div>
             </motion.div>
