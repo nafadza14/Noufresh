@@ -93,7 +93,7 @@ export default function Footer() {
         </div>
 
         {/* Large Watermark Text */}
-        <div className="text-[13vw] font-black bg-gradient-to-b from-gray-200/80 to-transparent bg-clip-text text-transparent text-center select-none leading-none tracking-tighter my-4 md:my-6 transition-all duration-300">
+        <div className="text-[16vw] md:text-[18vw] font-black bg-gradient-to-b from-gray-200/80 to-transparent bg-clip-text text-transparent text-center select-none leading-none tracking-tighter my-4 md:my-6 transition-all duration-300">
           Noufresh
         </div>
 
