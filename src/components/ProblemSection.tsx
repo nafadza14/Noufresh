@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ShieldAlert, Droplets, Zap, MessageCircleWarning, ArrowDownCircle, Clock9 } from 'lucide-react';
 
 const problems = [
@@ -35,6 +36,8 @@ const problems = [
 ];
 
 export default function ProblemSection() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <section className="section-container bg-white">
       <div className="text-center max-w-3xl mx-auto mb-20">
@@ -64,11 +67,15 @@ export default function ProblemSection() {
             "https://i.imgur.com/lmlpXg8.jpg",
             "https://i.imgur.com/2LqWJtE.jpg"
           ].map((img, i) => (
-            <div key={i} className="w-64 h-48 md:w-[360px] md:h-[240px] shrink-0 rounded-3xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all border border-gray-100 bg-white">
+            <div 
+              key={i} 
+              className="w-64 h-48 md:w-[360px] md:h-[240px] shrink-0 overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all border border-gray-100 bg-white"
+              onClick={() => setSelectedImage(img)}
+            >
               <img 
                 src={img} 
                 alt="Noufresh Showcase" 
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[0.85] group-hover:rounded-2xl origin-center"
+                className="w-full h-full object-cover origin-center"
               />
             </div>
           ))}
@@ -95,6 +102,38 @@ export default function ProblemSection() {
           </motion.div>
         ))}
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 md:p-12 cursor-pointer"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.img 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              src={selectedImage} 
+              alt="Enlarged Showcase" 
+              className="max-w-full max-h-full object-contain shadow-2xl cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button 
+              className="absolute top-6 right-6 text-white hover:text-gray-300 z-50 p-2"
+              onClick={() => setSelectedImage(null)}
+            >
+              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
