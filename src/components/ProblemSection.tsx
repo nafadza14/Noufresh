@@ -72,8 +72,7 @@ export default function ProblemSection() {
               className="w-64 h-48 md:w-[360px] md:h-[240px] shrink-0 overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all border border-gray-100 bg-white"
               onClick={() => setSelectedImage(img)}
             >
-              <img 
-                src={img} 
+              <img loading="lazy" decoding="async" src={img} 
                 alt="Noufresh Showcase" 
                 className="w-full h-full object-cover origin-center"
               />

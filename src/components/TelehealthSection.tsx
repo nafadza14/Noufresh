@@ -65,8 +65,7 @@ export default function TelehealthSection() {
 
           <div className="flex-1 relative">
             <div className="aspect-square rounded-[3rem] bg-teal-100 overflow-hidden shadow-inner relative">
-              <img 
-                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2070&auto=format&fit=crop" 
+              <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2070&auto=format&fit=crop" 
                 alt="Telehealth Consultation" 
                 className="w-full h-full object-cover opacity-90"
                 referrerPolicy="no-referrer"

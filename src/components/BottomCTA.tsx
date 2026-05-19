@@ -39,8 +39,7 @@ export default function BottomCTA() {
               transition={{ duration: 0.8 }}
               className="relative w-full max-w-md mx-auto lg:max-w-none"
             >
-              <img 
-                src="https://i.imgur.com/3922842e-a488-4513-ab35-3e7d3d161e76.jpg"
+              <img loading="lazy" decoding="async" src="https://i.imgur.com/3922842e-a488-4513-ab35-3e7d3d161e76.jpg"
                 alt="Noufresh Care Experience"
                 className="rounded-3xl shadow-2xl rotate-3 transform hover:rotate-0 transition-transform duration-700"
                 referrerPolicy="no-referrer"

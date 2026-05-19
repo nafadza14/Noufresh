@@ -37,15 +37,15 @@ export default function Hero() {
 
           <div className="mt-10 flex flex-wrap justify-center items-center gap-x-8 gap-y-4 md:gap-x-12">
             <div className="flex items-center gap-2 text-sm text-gray-400 font-medium tracking-wide">
-              <img src="https://upload.wikimedia.org/wikipedia/id/thumb/a/a8/BADAN_POM.png/330px-BADAN_POM.png" alt="BPOM" className="h-4 w-auto object-contain" />
+              <img loading="eager" decoding="async" src="https://upload.wikimedia.org/wikipedia/id/thumb/a/a8/BADAN_POM.png/330px-BADAN_POM.png" alt="BPOM" className="h-4 w-auto object-contain" />
               BPOM Terdaftar
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-400 font-medium tracking-wide">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Halal_Indonesia.svg" alt="Halal" className="h-5 w-auto object-contain" />
+              <img loading="eager" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Halal_Indonesia.svg" alt="Halal" className="h-5 w-auto object-contain" />
               Halal Certified
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-400 font-medium tracking-wide">
-              <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-icon-new-png-image_6315990.png" alt="WhatsApp" className="h-5 w-auto object-contain" /> Konsultasi Ekslusif 24/7
+              <img loading="eager" decoding="async" src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-icon-new-png-image_6315990.png" alt="WhatsApp" className="h-5 w-auto object-contain" /> Konsultasi Ekslusif 24/7
             </div>
           </div>
         </motion.div>
@@ -57,8 +57,7 @@ export default function Hero() {
           className="mt-12 w-full max-w-5xl"
         >
           <div className="aspect-[16/9] rounded-[2rem] overflow-hidden shadow-2xl relative">
-            <img 
-              src="https://i.imgur.com/SpNSZ4r.png" 
+            <img loading="eager" decoding="async" src="https://i.imgur.com/SpNSZ4r.png" 
               alt="Noufresh Care Kit" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"

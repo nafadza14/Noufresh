@@ -20,8 +20,7 @@ export default function Navbar() {
       <div className="max-w-[1240px] mx-auto px-6 flex items-center justify-between relative">
         <div className="flex items-center z-[60]">
           <Link to="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-            <img 
-              src="https://i.imgur.com/TPWEtiW.png" 
+            <img loading="eager" decoding="async" src="https://i.imgur.com/TPWEtiW.png" 
               alt="Noufresh Logo" 
               className="h-5 md:h-6 w-auto object-contain"
               referrerPolicy="no-referrer"

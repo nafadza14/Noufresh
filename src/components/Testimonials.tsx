@@ -59,7 +59,7 @@ export default function Testimonials() {
                 </p>
               </div>
               <div className="mt-auto pt-8 border-t border-gray-200/50 w-full flex flex-col items-center">
-                <img src={t.avatar} alt={t.name} className="w-14 h-14 rounded-full object-cover mb-4 shadow-sm grayscale-[0.5] hover:grayscale-0 transition-all duration-500" />
+                <img loading="lazy" decoding="async" src={t.avatar} alt={t.name} className="w-14 h-14 rounded-full object-cover mb-4 shadow-sm grayscale-[0.5] hover:grayscale-0 transition-all duration-500" />
                 <h4 className="font-extrabold text-gray-900">{t.name}</h4>
                 <div className="text-[12px] font-bold text-mint-fresh tracking-widest mt-1">{t.behel_type}</div>
                 <div className="text-[11px] text-gray-400 font-medium mt-1">{t.location}</div>

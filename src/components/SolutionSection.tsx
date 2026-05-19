@@ -65,8 +65,7 @@ export default function SolutionSection() {
               transition={{ duration: 0.8 }}
               className="relative rounded-3xl md:rounded-[3rem] overflow-hidden shadow-2xl"
             >
-              <img 
-                src="https://i.pinimg.com/736x/54/c0/49/54c0494dedfe10b852a767528fd9409d.jpg" 
+              <img loading="lazy" decoding="async" src="https://i.pinimg.com/736x/54/c0/49/54c0494dedfe10b852a767528fd9409d.jpg" 
                 alt="Noufresh Product Kit" 
                 className="w-full aspect-[4/5] object-cover"
                 referrerPolicy="no-referrer"

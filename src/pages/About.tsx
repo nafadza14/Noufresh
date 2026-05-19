@@ -61,8 +61,7 @@ export default function About() {
           </div>
           <div className="relative">
             <div className="aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1200" 
+              <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1200" 
                 alt="Our Vision" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

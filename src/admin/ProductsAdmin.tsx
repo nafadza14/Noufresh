@@ -174,7 +174,7 @@ export default function ProductsAdmin() {
                       <td className="p-4">
                         <div className="flex items-center gap-3">
                           {product.image_url ? (
-                            <img src={product.image_url} alt={product.name} className="w-12 h-12 rounded-lg object-cover bg-gray-100" />
+                            <img loading="lazy" decoding="async" src={product.image_url} alt={product.name} className="w-12 h-12 rounded-lg object-cover bg-gray-100" />
                           ) : (
                             <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400"><ImageIcon size={20}/></div>
                           )}

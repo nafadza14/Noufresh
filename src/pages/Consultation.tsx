@@ -80,7 +80,7 @@ export default function Consultation() {
                 className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-mint-fresh/30 transition-all flex flex-col items-center text-center"
               >
                 <div className="w-32 h-32 rounded-[2.5rem] overflow-hidden shrink-0 shadow-inner mb-8">
-                  <img src={d.img} alt={d.name} className="w-full h-full object-cover" />
+                  <img loading="lazy" decoding="async" src={d.img} alt={d.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="w-full flex flex-col items-center">
                   <h4 className="font-bold text-gray-900 text-xl mb-1">{d.name}</h4>
@@ -101,18 +101,15 @@ export default function Consultation() {
         <div className="mb-24">
           <h3 className="text-gray-400 font-black tracking-[0.2em] text-[10px] uppercase mb-12 opacity-70">Berpotensi bekerjasama dengan</h3>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-            <img 
-              src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/062013/pdgi_logo_1.jpg?itok=G0L20Ikm" 
+            <img loading="lazy" decoding="async" src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/062013/pdgi_logo_1.jpg?itok=G0L20Ikm" 
               alt="PDGI" 
               className="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
             />
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Logo_Kementerian_Komunikasi_dan_Digital_Republik_Indonesia_%282024_full_version%29.svg/1280px-Logo_Kementerian_Komunikasi_dan_Digital_Republik_Indonesia_%282024_full_version%29.svg.png" 
+            <img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Logo_Kementerian_Komunikasi_dan_Digital_Republik_Indonesia_%282024_full_version%29.svg/1280px-Logo_Kementerian_Komunikasi_dan_Digital_Republik_Indonesia_%282024_full_version%29.svg.png" 
               alt="KOMDIGI" 
               className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
             />
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/d/de/Logo_of_the_Ministry_of_Health_of_the_Republic_of_Indonesia.png" 
+            <img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/d/de/Logo_of_the_Ministry_of_Health_of_the_Republic_of_Indonesia.png" 
               alt="KEMENKES" 
               className="h-10 md:h-14 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
             />
@@ -123,13 +120,11 @@ export default function Consultation() {
           <h3 className="text-gray-400 font-black tracking-[0.2em] text-[10px] uppercase mb-2 opacity-70">Seluruh Produk Di Awasi Oleh</h3>
           <p className="text-gray-900 font-bold mb-12">BPOM RI Dan BPJH Halal RI</p>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/id/thumb/a/a8/BADAN_POM.png/330px-BADAN_POM.png" 
+            <img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/id/thumb/a/a8/BADAN_POM.png/330px-BADAN_POM.png" 
               alt="BPOM" 
               className="h-16 md:h-20 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
             />
-            <img 
-              src="https://staging-bpjph.halal.go.id/images/logo_bpjph_halal.png" 
+            <img loading="lazy" decoding="async" src="https://staging-bpjph.halal.go.id/images/logo_bpjph_halal.png" 
               alt="Halal Indonesia" 
               className="h-16 md:h-20 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
             />

@@ -18,8 +18,7 @@ export default function ProductCard({ name, price, image, category, rating }: Pr
       className="bg-white rounded-3xl p-4 border border-slate-100 transition-all hover:shadow-xl group"
     >
       <div className="aspect-square rounded-2xl overflow-hidden bg-slate-50 mb-4 relative">
-        <img 
-          src={image} 
+        <img loading="lazy" decoding="async" src={image} 
           alt={name} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />

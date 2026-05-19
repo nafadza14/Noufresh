@@ -28,8 +28,7 @@ export default function DashboardLayout({ children, onLogout }: { children: Reac
       {/* Sidebar */}
       <aside className="w-64 bg-white border-r border-gray-100 flex flex-col fixed h-full z-20">
         <div className="p-6 border-b border-gray-100">
-          <img 
-            src="https://i.imgur.com/TPWEtiW.png" 
+          <img loading="lazy" decoding="async" src="https://i.imgur.com/TPWEtiW.png" 
             alt="Noufresh Logo" 
             className="h-6"
           />
