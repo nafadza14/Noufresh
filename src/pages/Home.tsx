@@ -12,6 +12,7 @@ import BottomCTA from '../components/BottomCTA';
 import ProductCard from '../components/ProductCard';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const featuredProducts = [
   {
@@ -71,9 +72,9 @@ export default function Home() {
           <p className="text-gray-500 text-base mb-8">
             Produk kurasi terbaik yang dirancang khusus untuk memudahkan pembersihan area tersulit pada kawat gigi.
           </p>
-          <button className="inline-flex items-center gap-2 text-mint-fresh font-bold hover:gap-3 transition-all">
+          <Link to="/shop" className="inline-flex items-center gap-2 text-mint-fresh font-bold hover:gap-3 transition-all cursor-pointer">
             Lihat Semua Produk <ArrowRight className="w-4 h-4" />
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
