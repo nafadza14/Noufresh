@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Search } from 'lucide-react';
+import { Search, Clock } from 'lucide-react';
 
 export default function CustomersAdmin() {
   const [customers] = useState([
-    { id: 'CUST-001', name: 'Budi Santoso', email: 'budi.santoso@email.com', phone: '081234567890', address: 'Tebet Timur, Jakarta Selatan', orders: 2, totalSpent: 'Rp 498.000', joined: '10 Mei 2026' },
-    { id: 'CUST-002', name: 'Siti Aminah', email: 'siti.am@email.com', phone: '085678901234', address: 'Dago, Bandung', orders: 1, totalSpent: 'Rp 149.000', joined: '12 Mei 2026' },
-    { id: 'CUST-003', name: 'Andi Wijaya', email: 'andi.w@email.com', phone: '081122334455', address: 'Kebayoran Baru, Jakarta', orders: 4, totalSpent: 'Rp 1.198.000', joined: '01 Mei 2026' },
-    { id: 'CUST-004', name: 'Rina Marlina', email: 'rina.marlina@email.com', phone: '089988776655', address: 'Sumur Bandung, Bandung', orders: 1, totalSpent: 'Rp 349.000', joined: '13 Mei 2026' },
+    { id: 'CUST-001', name: 'Budi Santoso', email: 'budi.santoso@email.com', phone: '081234567890', address: 'Tebet Timur, Jakarta Selatan', orders: 2, totalSpent: 'Rp 498.000', joined: '10 Mei 2026', activePackage: 'Dental Kit Complete', daysRemaining: 86 },
+    { id: 'CUST-002', name: 'Siti Aminah', email: 'siti.am@email.com', phone: '085678901234', address: 'Dago, Bandung', orders: 1, totalSpent: 'Rp 149.000', joined: '12 Mei 2026', activePackage: 'Dental Kit Starter', daysRemaining: 23 },
+    { id: 'CUST-003', name: 'Andi Wijaya', email: 'andi.w@email.com', phone: '081122334455', address: 'Kebayoran Baru, Jakarta', orders: 4, totalSpent: 'Rp 1.198.000', joined: '01 Mei 2026', activePackage: 'Produk Satuan', daysRemaining: null },
+    { id: 'CUST-004', name: 'Rina Marlina', email: 'rina.marlina@email.com', phone: '089988776655', address: 'Sumur Bandung, Bandung', orders: 1, totalSpent: 'Rp 599.000', joined: '13 Mei 2026', activePackage: 'Dental Kit Pro', daysRemaining: 175 },
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -45,6 +45,7 @@ export default function CustomersAdmin() {
                 <th className="p-4 font-semibold">Nama</th>
                 <th className="p-4 font-semibold">Kontak</th>
                 <th className="p-4 font-semibold">Lokasi</th>
+                <th className="p-4 font-semibold text-center">Sisa Paket</th>
                 <th className="p-4 font-semibold text-center">Total Pesanan</th>
                 <th className="p-4 font-semibold text-right">Total Belanja</th>
               </tr>
@@ -62,8 +63,23 @@ export default function CustomersAdmin() {
                       <div className="text-gray-900">{customer.email}</div>
                       <div className="text-gray-500 text-xs mt-0.5">{customer.phone}</div>
                     </td>
-                    <td className="p-4 text-gray-600 max-w-[200px] truncate" title={customer.address}>
+                    <td className="p-4 text-gray-600 max-w-[180px] truncate" title={customer.address}>
                       {customer.address}
+                    </td>
+                    <td className="p-4 text-center">
+                      {customer.daysRemaining !== null ? (
+                        <div className="flex flex-col items-center">
+                          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-orange-50 text-orange-600 rounded-full text-[11px] font-bold border border-orange-100">
+                            <Clock className="w-3 h-3" /> {customer.daysRemaining} Hari
+                          </div>
+                          <div className="text-[10px] text-gray-400 font-bold mt-1.5">{customer.activePackage}</div>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center">
+                          <span className="text-gray-300 font-black text-lg">-</span>
+                          <div className="text-[10px] text-gray-400 mt-0.5">{customer.activePackage}</div>
+                        </div>
+                      )}
                     </td>
                     <td className="p-4 text-center font-bold text-gray-900">{customer.orders} kali</td>
                     <td className="p-4 text-right font-bold text-mint-fresh">{customer.totalSpent}</td>
@@ -71,7 +87,7 @@ export default function CustomersAdmin() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6} className="p-8 text-center text-gray-400">
+                  <td colSpan={7} className="p-8 text-center text-gray-400">
                     Pelanggan tidak ditemukan.
                   </td>
                 </tr>
