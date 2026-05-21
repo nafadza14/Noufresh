@@ -8,12 +8,12 @@ const questions = [
   {
     id: 'q1',
     question: "Sudah berapa lama kamu pakai behel?",
-    options: ["< 3 bulan", "3-6 bulan", "6-12 bulan", "1-2 tahun", "> 2 tahun"]
+    options: ["kurang dari 3 bulan", "3 sampai 6 bulan", "6 sampai 12 bulan", "1 sampai 2 tahun", "lebih dari 2 tahun"]
   },
   {
     id: 'q2',
     question: "Jenis behel apa yang kamu pakai?",
-    options: ["Metal konvensional", "Ceramic/transparan", "Self-ligating", "Lingual", "Clear aligner"]
+    options: ["Metal konvensional", "Keramik atau transparan", "Self ligating", "Lingual", "Clear aligner"]
   },
   {
     id: 'q3',
@@ -35,7 +35,7 @@ const questions = [
   {
     id: 'q6',
     question: "Kapan terakhir kontrol ke ortodontis?",
-    options: ["Minggu lalu", "2 sampai 4 minggu lalu", "1 sampai 2 bulan lalu", "> 2 bulan lalu", "Belum pernah"]
+    options: ["Minggu lalu", "2 sampai 4 minggu lalu", "1 sampai 2 bulan lalu", "lebih dari 2 bulan lalu", "Belum pernah"]
   },
   {
     id: 'q7',

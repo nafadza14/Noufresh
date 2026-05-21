@@ -753,7 +753,7 @@ export default function AssessmentResult() {
               >
                 <button 
                   ref={mainCtaRef}
-                  className="w-full h-13 rounded-full text-white font-bold text-[14px] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-lg cursor-pointer bg-mint-fresh"
+                  className="w-full btn-primary !h-15 rounded-full text-white font-bold text-[15px] active:scale-[0.98] transition-all flex items-center justify-center gap-3 group shadow-lg cursor-pointer bg-mint-fresh"
                   style={{ 
                     backgroundColor: '#16c0f9',
                     boxShadow: '0 8px 30px -4px rgba(22, 192, 249, 0.45)'
@@ -764,7 +764,7 @@ export default function AssessmentResult() {
                   {categoryId === 'cukup_baik' && "Tingkatkan skor ke 80"}
                   {categoryId === 'sangat_baik' && `Coba trial kit seharga ${categoryData.recommendedPrice}`}
                   
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
 
@@ -847,7 +847,7 @@ export default function AssessmentResult() {
             className="block w-full"
           >
             <button 
-              className="w-full h-13 rounded-full text-white font-bold text-[14px] flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-lg cursor-pointer bg-mint-fresh"
+              className="w-full btn-primary !h-15 rounded-full text-white font-bold text-[15px] flex items-center justify-center gap-3 active:scale-[0.98] transition-all shadow-lg cursor-pointer bg-mint-fresh group"
               style={{ 
                 backgroundColor: '#16c0f9',
                 boxShadow: '0 8px 30px -4px rgba(22, 192, 249, 0.45)'
@@ -857,7 +857,7 @@ export default function AssessmentResult() {
               {categoryId === 'perlu_perhatian' && "Mulai perbaikan seharga Rp 149.000"}
               {categoryId === 'cukup_baik' && "Tingkatkan skor seharga Rp 149.000"}
               {categoryId === 'sangat_baik' && "Coba trial seharga Rp 49.000"}
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </Link>
         </div>
