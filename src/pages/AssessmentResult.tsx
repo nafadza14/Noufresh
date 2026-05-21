@@ -72,9 +72,9 @@ const CATEGORIES_DATA: Record<string, TierInfo> = {
       badgeBg: '#fff1f2',
       badgeText: '#be123c'
     },
-    recommendedProduct: 'Behel Care Complete 90 Hari',
-    recommendedPrice: 'Rp 349.000',
-    strikethroughPrice: 'Rp 499.000',
+    recommendedProduct: 'Behel Care Complete',
+    recommendedPrice: 'Rp 399.000',
+    strikethroughPrice: 'Rp 579.000',
     recommendedTier: 'complete',
     checkoutUrl: '/checkout/complete',
     badgeText: 'Perlu segera ditangani',
@@ -85,13 +85,17 @@ const CATEGORIES_DATA: Record<string, TierInfo> = {
       detail: "behel metal, 10 bulan pemakaian"
     },
     inclusions: [
-      "3 botol Mouthwash Noufresh Behel Edition",
-      "30 pcs Interdental Brush",
-      "Sikat gigi khusus behel V shape",
-      "Orthodontic Wax pereda sariawan",
-      "Mirror dental mini",
-      "Chat Behel Care Consultant tanpa batas 90 hari",
-      "Reminder perawatan harian via WhatsApp"
+      "3 botol Noufresh Mouthwash 250ml pilihan Mint atau Blueberry (supply 90 hari)",
+      "Noufresh Mouth Spray 20ml pilihan rasa Mint atau Peach",
+      "Noufresh Purple Toothpaste 20ml untuk mencerahkan gigi secara konsisten",
+      "30 pcs Interdental Brush supply penuh 90 hari",
+      "Sikat gigi khusus behel bentuk V untuk menjangkau bawah kawat",
+      "Orthodontic Wax 3 pak supply penuh 90 hari",
+      "Mirror dental mini untuk pantau kebersihan bracket",
+      "Panduan PDF 90 Hari Bebas Sariawan dan Bau Mulut",
+      "Chat WhatsApp Behel Care Consultant tanpa batas selama 90 hari",
+      "Reminder perawatan harian via WhatsApp",
+      "Free Ongkir ke seluruh Indonesia"
     ],
     defaultInsights: [
       {
@@ -126,8 +130,8 @@ const CATEGORIES_DATA: Record<string, TierInfo> = {
       badgeBg: '#fef9c3',
       badgeText: '#854d0e'
     },
-    recommendedProduct: 'Behel Care Starter 30 Hari',
-    recommendedPrice: 'Rp 149.000',
+    recommendedProduct: 'Behel Care Starter',
+    recommendedPrice: 'Rp 179.000',
     recommendedTier: 'starter',
     checkoutUrl: '/checkout/starter',
     badgeText: 'Paling pas untuk kondisi kamu',
@@ -138,11 +142,14 @@ const CATEGORIES_DATA: Record<string, TierInfo> = {
       detail: "behel keramik, 14 bulan pemakaian"
     },
     inclusions: [
-      "1 botol Mouthwash Noufresh Behel Edition (300ml)",
-      "10 pcs Interdental Brush",
-      "Panduan digital Rawat Behel 30 Hari Pertama",
-      "Chat Behel Care Consultant 30 hari",
-      "Gratis ongkir"
+      "Noufresh Mouthwash 250ml pilihan rasa Mint atau Blueberry",
+      "Noufresh Mouth Spray 10ml pilihan rasa Mint atau Peach",
+      "Noufresh Purple Toothpaste 20ml untuk mencerahkan gigi secara bertahap",
+      "10 pcs Interdental Brush khusus pengguna behel",
+      "Orthodontic Wax 1 pak untuk perlindungan dari gesekan kawat",
+      "Panduan PDF 30 Hari Pertama Pakai Behel",
+      "Akses chat WhatsApp Behel Care Consultant selama 30 hari",
+      "Free Ongkir ke seluruh Indonesia"
     ],
     defaultInsights: [
       {
@@ -171,8 +178,8 @@ const CATEGORIES_DATA: Record<string, TierInfo> = {
       badgeBg: '#f0fdff',
       badgeText: '#0c7295'
     },
-    recommendedProduct: 'Behel Care Starter 30 Hari',
-    recommendedPrice: 'Rp 149.000',
+    recommendedProduct: 'Behel Care Starter',
+    recommendedPrice: 'Rp 179.000',
     recommendedTier: 'starter',
     checkoutUrl: '/checkout/starter',
     badgeText: 'Untuk peningkatan dan perawatan berkala',
@@ -183,11 +190,14 @@ const CATEGORIES_DATA: Record<string, TierInfo> = {
       detail: "behel metal, 6 bulan pemakaian"
     },
     inclusions: [
-      "1 botol Mouthwash Noufresh Behel Edition (300ml)",
-      "10 pcs Interdental Brush",
-      "Panduan digital Rawat Behel 30 Hari Pertama",
-      "Chat Behel Care Consultant 30 hari",
-      "Gratis ongkir"
+      "Noufresh Mouthwash 250ml pilihan rasa Mint atau Blueberry",
+      "Noufresh Mouth Spray 10ml pilihan rasa Mint atau Peach",
+      "Noufresh Purple Toothpaste 20ml untuk mencerahkan gigi secara bertahap",
+      "10 pcs Interdental Brush khusus pengguna behel",
+      "Orthodontic Wax 1 pak untuk perlindungan dari gesekan kawat",
+      "Panduan PDF 30 Hari Pertama Pakai Behel",
+      "Akses chat WhatsApp Behel Care Consultant selama 30 hari",
+      "Free Ongkir ke seluruh Indonesia"
     ],
     defaultInsights: [
       {
@@ -216,8 +226,8 @@ const CATEGORIES_DATA: Record<string, TierInfo> = {
       badgeBg: '#f0fdfa',
       badgeText: '#115e59'
     },
-    recommendedProduct: 'Behel Care Trial Kit 14 Hari',
-    recommendedPrice: 'Rp 49.000',
+    recommendedProduct: 'Behel Care Trial Kit',
+    recommendedPrice: 'Rp 59.000',
     recommendedTier: 'trial',
     checkoutUrl: '/checkout/trial',
     badgeText: 'Coba dulu 14 hari',
@@ -228,10 +238,10 @@ const CATEGORIES_DATA: Record<string, TierInfo> = {
       detail: "self ligating, 8 bulan pemakaian"
     },
     inclusions: [
-      "1 botol Mouthwash Noufresh Behel Edition (100ml)",
-      "5 pcs Interdental Brush",
-      "Panduan digital PDF personal",
-      "Akses chat WhatsApp 14 hari"
+      "Noufresh Mouth Spray 10ml pilihan rasa Mint atau Peach",
+      "5 pcs Interdental Brush khusus pengguna behel",
+      "Akses chat WhatsApp Behel Care Consultant selama 14 hari",
+      "Assessment lanjutan gratis setelah 14 hari pemakaian"
     ],
     defaultInsights: [
       {
@@ -419,7 +429,7 @@ export default function AssessmentResult() {
   const handleCheckoutClick = () => {
     firePixelEvent('InitiateCheckout', {
       content_name: categoryData.recommendedProduct,
-      value: categoryData.recommendedTier === 'complete' ? 349000 : (categoryData.recommendedTier === 'starter' ? 149000 : 49000),
+      value: categoryData.recommendedTier === 'complete' ? 399000 : (categoryData.recommendedTier === 'starter' ? 179000 : 59000),
       currency: 'IDR',
       num_items: 1
     });
@@ -801,7 +811,7 @@ export default function AssessmentResult() {
 
                 <Link to="/checkout/complete" className="block w-full">
                   <button className="w-full py-3.5 px-6 rounded-full border border-gray-200 text-gray-500 hover:text-gray-800 hover:border-gray-300 bg-transparent font-bold text-[12px] active:scale-[0.98] transition-all text-center cursor-pointer">
-                    Lihat program 90 hari yang lebih lengkap seharga Rp 349.000
+                    Lihat program 90 hari yang lebih lengkap seharga Rp 399.000
                   </button>
                 </Link>
               </motion.section>
@@ -853,10 +863,10 @@ export default function AssessmentResult() {
                 boxShadow: '0 8px 30px -4px rgba(22, 192, 249, 0.45)'
               }}
             >
-              {categoryId === 'risiko_tinggi' && "Mulai program sekarang seharga Rp 349.000"}
-              {categoryId === 'perlu_perhatian' && "Mulai perbaikan seharga Rp 149.000"}
-              {categoryId === 'cukup_baik' && "Tingkatkan skor seharga Rp 149.000"}
-              {categoryId === 'sangat_baik' && "Coba trial seharga Rp 49.000"}
+              {categoryId === 'risiko_tinggi' && "Mulai program sekarang seharga Rp 399.000"}
+              {categoryId === 'perlu_perhatian' && "Mulai perbaikan seharga Rp 179.000"}
+              {categoryId === 'cukup_baik' && "Tingkatkan skor seharga Rp 179.000"}
+              {categoryId === 'sangat_baik' && "Coba trial seharga Rp 59.000"}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </Link>

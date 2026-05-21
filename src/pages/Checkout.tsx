@@ -7,9 +7,55 @@ import AddressForm from '../components/Checkout/AddressForm';
 import { supabase } from '../lib/supabase';
 
 const tiers: Record<string, any> = {
-  starter: { name: 'Dental Kit Starter', price: 'Rp 149.000', duration: '30 Hari' },
-  complete: { name: 'Dental Kit Complete', price: 'Rp 349.000', duration: '90 Hari', items: ['3x Mouthwash', '30x Interdental', 'V Shape Brush', 'Ortho Wax'] },
-  pro: { name: 'Dental Kit Pro', price: 'Rp 599.000', duration: '180 Hari' },
+  trial: { 
+    name: 'Behel Care Trial Kit', 
+    price: 'Rp 59.000', 
+    duration: '14 Hari', 
+    items: [
+      'Noufresh Mouth Spray 10ml',
+      '5 pcs Interdental Brush'
+    ] 
+  },
+  starter: { 
+    name: 'Behel Care Starter', 
+    price: 'Rp 179.000', 
+    duration: '30 Hari', 
+    items: [
+      'Noufresh Mouthwash 250ml',
+      'Noufresh Mouth Spray 10ml',
+      'Noufresh Purple Toothpaste 20ml',
+      '10 pcs Interdental Brush',
+      'Orthodontic Wax 1 pak'
+    ] 
+  },
+  complete: { 
+    name: 'Behel Care Complete', 
+    price: 'Rp 399.000', 
+    duration: '90 Hari', 
+    items: [
+      '3 botol Noufresh Mouthwash 250ml',
+      'Noufresh Mouth Spray 20ml',
+      'Noufresh Purple Toothpaste 20ml',
+      '30 pcs Interdental Brush',
+      'Sikat Gigi Khusus Behel V Shape',
+      'Orthodontic Wax 3 pak',
+      'Mirror Dental Mini'
+    ] 
+  },
+  pro: { 
+    name: 'Behel Care Pro', 
+    price: 'Rp 749.000', 
+    duration: '180 Hari', 
+    items: [
+      '6 botol Noufresh Mouthwash 250ml',
+      '2 botol Noufresh Mouth Spray 20ml',
+      '2 buah Noufresh Purple Toothpaste 20ml',
+      '60 pcs Interdental Brush',
+      '2 pcs Sikat Gigi Khusus Behel V Shape',
+      'Orthodontic Wax 6 pak',
+      'Mirror Dental Mini'
+    ] 
+  },
 };
 
 export default function Checkout() {

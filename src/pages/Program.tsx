@@ -25,7 +25,7 @@ export default function Program() {
       </section>
 
       {/* Program Details Section */}
-      <ProgramSection />
+      <ProgramSection showTrial={true} />
 
       {/* Kenapa Harus Memilih Program Kami */}
       <section className="py-24 bg-white border-t border-gray-100">
