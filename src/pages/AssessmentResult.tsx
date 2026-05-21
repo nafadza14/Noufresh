@@ -608,29 +608,28 @@ export default function AssessmentResult() {
                 Yang perlu kamu tahu
               </h3>
               
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {finalInsights.map((insight, index) => {
                   const styleTheme = INSIGHT_STYLES[insight.style];
                   return (
                     <div 
                       key={index}
-                      className="p-4.5 rounded-[1.25rem] flex gap-4 border border-gray-100 shadow-[0_4px_16px_rgba(0,0,0,0.01)]"
+                      className="p-6 rounded-[1.5rem] flex gap-5 border border-gray-100/80 shadow-[0_8px_24px_rgba(0,0,0,0.015)]"
                       style={{ backgroundColor: 'white' }}
                     >
                       <div 
-                        className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center mt-0.5"
+                        className="flex-shrink-0 w-11 h-11 rounded-2xl flex items-center justify-center mt-0.5"
                         style={{ backgroundColor: styleTheme.background }}
                       >
-                        {renderIcon(insight.iconName, styleTheme.iconColor, "w-4.5 h-4.5")}
+                        {renderIcon(insight.iconName, styleTheme.iconColor, "w-5 h-5")}
                       </div>
-                      <div className="flex-grow">
+                      <div className="flex-grow space-y-1.5">
                         <h4 
-                          className="text-[13.5px] font-bold tracking-tight mb-1"
-                          style={{ color: '#111827' }}
+                          className="text-[14.5px] font-bold tracking-tight text-gray-900 leading-tight"
                         >
                           {insight.title}
                         </h4>
-                        <p className="text-xs leading-relaxed text-gray-500 font-medium">
+                        <p className="text-[12.5px] leading-relaxed text-gray-500 font-medium">
                           {insight.body}
                         </p>
                       </div>
@@ -651,16 +650,16 @@ export default function AssessmentResult() {
                 Yang dialami orang dengan kondisi serupa
               </h3>
               
-              <div className="bg-gray-50/70 p-5 rounded-[1.5rem] border border-gray-100/80 relative overflow-hidden">
-                <span className="text-4xl text-mint-fresh/20 font-serif absolute -top-2 left-2 select-none">“</span>
-                <p className="text-xs text-gray-600 italic leading-relaxed relative z-10 pl-4 font-medium">
+              <div className="bg-gray-50/60 p-7 rounded-[2rem] border border-gray-100/60 relative overflow-hidden space-y-4">
+                <span className="text-5xl text-mint-fresh/15 font-serif absolute -top-1 left-2 select-none">“</span>
+                <p className="text-[13px] text-gray-600 italic leading-relaxed relative z-10 pl-5 font-medium">
                   {categoryData.testimonial.quote}
                 </p>
-                <div className="mt-4 flex items-center justify-between border-t border-gray-100 pt-3 pl-4">
-                  <div className="text-[11px] font-bold text-gray-800">
+                <div className="mt-4 flex items-center justify-between border-t border-gray-100/60 pt-4 pl-5">
+                  <div className="text-[12px] font-bold text-gray-800">
                     {categoryData.testimonial.name}, {categoryData.testimonial.location}
                   </div>
-                  <div className="text-[10px] font-semibold text-gray-400">
+                  <div className="text-[10.5px] font-semibold text-gray-400">
                     {categoryData.testimonial.detail}
                   </div>
                 </div>
@@ -680,22 +679,22 @@ export default function AssessmentResult() {
 
               {/* Recommended Product Box */}
               <div 
-                className="bg-white rounded-[2rem] p-6 border shadow-[0_12px_30px_rgba(0,0,0,0.02)] transition-all"
+                className="bg-white rounded-[2.25rem] p-8 border shadow-[0_12px_40px_rgba(0,0,0,0.025)] transition-all space-y-6"
                 style={{ borderColor: `${categoryData.colorTheme.primary}30` }}
               >
-                <div className="flex justify-between items-start gap-2 mb-3.5">
-                  <h4 className="text-[16px] font-bold text-gray-900 leading-tight tracking-tight">
+                <div className="flex justify-between items-start gap-4">
+                  <h4 className="text-[17px] font-bold text-gray-900 leading-tight tracking-tight">
                     {categoryData.recommendedProduct}
                   </h4>
                   <span 
-                    className="text-[10px] font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
+                    className="text-[10px] font-semibold px-3 py-1 rounded-full flex-shrink-0"
                     style={{ backgroundColor: categoryData.colorTheme.badgeBg, color: categoryData.colorTheme.badgeText }}
                   >
                     {categoryData.badgeText}
                   </span>
                 </div>
                 
-                <div className="flex items-baseline gap-2 mb-4.5">
+                <div className="flex items-baseline gap-2.5">
                   <span 
                     className="text-2xl font-black tracking-tight"
                     style={{ color: categoryData.colorTheme.primary }}
@@ -710,30 +709,32 @@ export default function AssessmentResult() {
                   )}
                 </div>
 
-                <hr className="border-gray-100 mb-4.5" />
+                <hr className="border-gray-100" />
 
-                <h5 className="text-[10px] font-bold text-gray-400 tracking-wider mb-3">
-                  Paket sudah termasuk
-                </h5>
-                
-                <ul className="space-y-3">
-                  {categoryData.inclusions.map((inclusion, idx) => (
-                    <li key={idx} className="flex gap-2.5 items-start">
-                      <div 
-                        className="w-[18px] h-[18px] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                        style={{ backgroundColor: `${categoryData.colorTheme.primary}12` }}
-                      >
-                        <Check 
-                          className="w-3 h-3" 
-                          style={{ color: categoryData.colorTheme.primary }} 
-                        />
-                      </div>
-                      <span className="text-[12px] font-medium text-gray-600 leading-tight">
-                        {inclusion}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="space-y-4">
+                  <h5 className="text-[10px] font-bold text-gray-400 tracking-wider">
+                    Paket sudah termasuk
+                  </h5>
+                  
+                  <ul className="space-y-3.5">
+                    {categoryData.inclusions.map((inclusion, idx) => (
+                      <li key={idx} className="flex gap-3 items-start">
+                        <div 
+                          className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                          style={{ backgroundColor: `${categoryData.colorTheme.primary}12` }}
+                        >
+                          <Check 
+                            className="w-3 h-3" 
+                            style={{ color: categoryData.colorTheme.primary }} 
+                          />
+                        </div>
+                        <span className="text-[12.5px] font-medium text-gray-600 leading-normal">
+                          {inclusion}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </motion.section>
 
@@ -742,19 +743,20 @@ export default function AssessmentResult() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-              className="mb-6"
+              className="mb-8"
             >
               {/* Primary checkout button */}
               <Link 
                 to={categoryData.checkoutUrl}
                 onClick={handleCheckoutClick}
+                className="block w-full"
               >
                 <button 
                   ref={mainCtaRef}
-                  className="w-full h-13 rounded-full text-white font-bold text-[14px] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-lg cursor-pointer"
+                  className="w-full h-13 rounded-full text-white font-bold text-[14px] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-lg cursor-pointer bg-mint-fresh"
                   style={{ 
-                    backgroundColor: categoryData.colorTheme.primary,
-                    boxShadow: `0 8px 30px -4px ${categoryData.colorTheme.primary}30`
+                    backgroundColor: '#16c0f9',
+                    boxShadow: '0 8px 30px -4px rgba(22, 192, 249, 0.45)'
                   }}
                 >
                   {categoryId === 'risiko_tinggi' && "Mulai program saya sekarang"}
@@ -797,7 +799,7 @@ export default function AssessmentResult() {
                   <div className="h-px bg-gray-100 flex-grow"></div>
                 </div>
 
-                <Link to="/checkout/complete">
+                <Link to="/checkout/complete" className="block w-full">
                   <button className="w-full py-3.5 px-6 rounded-full border border-gray-200 text-gray-500 hover:text-gray-800 hover:border-gray-300 bg-transparent font-bold text-[12px] active:scale-[0.98] transition-all text-center cursor-pointer">
                     Lihat program 90 hari yang lebih lengkap seharga Rp 349.000
                   </button>
@@ -842,10 +844,14 @@ export default function AssessmentResult() {
           <Link 
             to={categoryData.checkoutUrl}
             onClick={handleCheckoutClick}
+            className="block w-full"
           >
             <button 
-              className="w-full h-12 rounded-full text-white font-bold text-[13px] tracking-wide flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all shadow-md cursor-pointer"
-              style={{ backgroundColor: categoryData.colorTheme.primary }}
+              className="w-full h-13 rounded-full text-white font-bold text-[14px] flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-lg cursor-pointer bg-mint-fresh"
+              style={{ 
+                backgroundColor: '#16c0f9',
+                boxShadow: '0 8px 30px -4px rgba(22, 192, 249, 0.45)'
+              }}
             >
               {categoryId === 'risiko_tinggi' && "Mulai program sekarang seharga Rp 349.000"}
               {categoryId === 'perlu_perhatian' && "Mulai perbaikan seharga Rp 149.000"}
