@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowLeft, CheckCircle2, Download, MessageCircle, AlertCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 
 const questions = [
@@ -45,6 +45,7 @@ const questions = [
 ];
 
 export default function Assessment() {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
   const [formData, setFormData] = useState({
@@ -52,7 +53,6 @@ export default function Assessment() {
     whatsapp: '',
     umur: ''
   });
-  const [showResult, setShowResult] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleOptionClick = (questionId: string, option: string, multi = false) => {
@@ -80,19 +80,69 @@ export default function Assessment() {
       }
       setIsSubmitting(true);
 
+      // Calculate score and category dynamically
+      let score = 100;
+
+      // Q3 (complaints): id 'q3'
+      const keluhanSelected = (answers['q3'] as string[]) || [];
+      if (keluhanSelected.length > 0 && !keluhanSelected.includes('Belum ada keluhan')) {
+        score -= Math.min(30, keluhanSelected.length * 10);
+      }
+
+      // Q4 (brush frequency): id 'q4'
+      const sikatGigi = answers['q4'] as string;
+      if (sikatGigi === '2x') score -= 5;
+      else if (sikatGigi === '1x') score -= 20;
+      else if (sikatGigi === 'Tidak teratur') score -= 25;
+
+      // Q5 (helper tools): id 'q5'
+      const alatBantu = (answers['q5'] as string[]) || [];
+      if (alatBantu.includes('Tidak pakai sama sekali') || alatBantu.length === 0) {
+        score -= 25;
+      } else {
+        let offsets = 0;
+        if (alatBantu.includes('Interdental brush')) offsets += 10;
+        if (alatBantu.includes('Dental floss')) offsets += 8;
+        if (alatBantu.includes('Obat kumur')) offsets += 7;
+        score -= Math.max(0, 25 - offsets);
+      }
+
+      // Q6 (last ortho visit): id 'q6'
+      const kontrol = answers['q6'] as string;
+      if (kontrol === '1 sampai 2 bulan lalu') score -= 10;
+      else if (kontrol === '> 2 bulan lalu') score -= 20;
+      else if (kontrol === 'Belum pernah') score -= 25;
+
+      score = Math.max(0, Math.min(100, score));
+
+      let categoryId = 'perlu_perhatian';
+      let categoryLabel = 'Ada 2–3 Kebiasaan yang Perlu Diperbaiki';
+      if (score <= 39) {
+        categoryId = 'risiko_tinggi';
+        categoryLabel = 'Gigi Kamu Butuh Bantuan Sekarang';
+      } else if (score <= 59) {
+        categoryId = 'perlu_perhatian';
+        categoryLabel = 'Ada 2–3 Kebiasaan yang Perlu Diperbaiki';
+      } else if (score <= 79) {
+        categoryId = 'cukup_baik';
+        categoryLabel = 'Perawatan Kamu Sudah di Jalur yang Benar';
+      } else {
+        categoryId = 'sangat_baik';
+        categoryLabel = 'Perawatan Kamu Sudah Sangat Baik';
+      }
+
       // Save to Supabase
       const { error } = await supabase.from('assessments').insert([{
         name: formData.nama,
         phone: formData.whatsapp,
         age: formData.umur,
-        result: '68 Poin (Perlu Perhatian Khusus)',
+        result: `${score} Poin (${categoryLabel})`,
         answers: answers
       }]);
 
       if (error) {
         console.error('Error saving assessment:', error);
         if (error.code === '42P01') {
-          // Table doesn't exist yet, just continue to show result for now
           console.log('Tabel assessments belum dibuat.');
         } else {
           alert('Gagal menyimpan data: ' + error.message);
@@ -100,9 +150,11 @@ export default function Assessment() {
       }
 
       setTimeout(() => {
-        setShowResult(true);
         setIsSubmitting(false);
-      }, 500);
+        const complaintsParam = encodeURIComponent(JSON.stringify(keluhanSelected));
+        const durationParam = encodeURIComponent(answers['q1'] as string || '');
+        navigate(`/assessment/result?score=${score}&category=${categoryId}&keluhan=${complaintsParam}&duration=${durationParam}`);
+      }, 800);
     }
   };
 
@@ -111,11 +163,6 @@ export default function Assessment() {
   };
 
   const progress = ((currentStep + 1) / questions.length) * 100;
-
-  if (showResult) {
-    return <ResultView />;
-  }
-
   const isLastStep = currentStep === questions.length - 1;
 
   return (
@@ -269,79 +316,6 @@ export default function Assessment() {
 
         <div className="mt-8 text-center text-gray-400 text-xs font-medium px-4">
           Data Anda aman dan terenkripsi. Kami hanya menggunakan data ini untuk memberikan rekomendasi perawatan terbaik.
-        </div>
-      </div>
-    </main>
-  );
-}
-
-function ResultView() {
-  return (
-    <main className="bg-gray-50 min-h-screen pt-32 pb-20 md:pt-48 px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-[4rem] shadow-2xl overflow-hidden border border-gray-100">
-          <div className="bg-mint-fresh p-12 md:p-20 text-center text-white relative overflow-hidden">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="relative z-10"
-            >
-              <div className="w-28 h-28 md:w-48 md:h-48 border-8 border-white/20 rounded-full flex flex-col items-center justify-center mx-auto mb-8 bg-white/10 backdrop-blur-md">
-                <span className="text-4xl md:text-7xl font-black">68</span>
-                <span className="text-xs md:text-sm font-bold opacity-60 tracking-widest mt-[-0.5rem]">Poin</span>
-              </div>
-              <h2 className="text-2xl md:text-5xl text-white mb-4">Perlu Perhatian Khusus</h2>
-              <p className="text-white/80 text-lg max-w-xl mx-auto">Pola perawatan kamu sudah cukup baik, namun ada beberapa "Red Flags" yang berisiko memperlama masa pakai behel kamu.</p>
-            </motion.div>
-            
-            {/* Background elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
-          </div>
-
-          <div className="p-8 md:p-16">
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                    <AlertCircle className="text-red-500 w-5 h-5" /> Analisis Risiko
-                  </h3>
-                  <div className="space-y-4">
-                    <div className="p-5 bg-red-50 border border-red-100 rounded-2xl">
-                      <div className="font-bold text-red-900 text-sm mb-1">Potensi Penyakit Gusi</div>
-                      <p className="text-red-700/70 text-[13px]">Keluhan gusi berdarah menunjukkan adanya perdarahan gingiva akibat akumulasi plak di bracket.</p>
-                    </div>
-                    <div className="p-5 bg-orange-50 border border-orange-100 rounded-2xl">
-                      <div className="font-bold text-orange-900 text-sm mb-1">Demineralisasi Enamel</div>
-                      <p className="text-orange-700/70 text-[13px]">Jarang menggunakan interdental brush meningkatkan risiko 'white spot lesions' di sekitar bracket.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <button className="w-full flex items-center justify-center gap-3 p-5 bg-gray-900 text-white rounded-2xl font-bold hover:bg-gray-800 transition-all">
-                  <Download className="w-5 h-5" /> Download Panduan PDF Personal
-                </button>
-              </div>
-
-              <div className="bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100">
-                <span className="text-[10px] font-black text-mint-fresh tracking-widest mb-3 block">Rekomendasi Program</span>
-                <h4 className="text-2xl font-bold mb-4">Dental Kit Complete (90 Hari)</h4>
-                <p className="text-gray-500 text-sm mb-8 leading-relaxed">Dirancang untuk mengatasi akumulasi plak dan mempercepat penyembuhan sariawan dalam 90 hari transformasi.</p>
-                <Link to="/checkout/complete" className="btn-primary w-full block text-center mb-4">
-                   Pilih Program Ini Rp 349rb
-                </Link>
-                <div className="flex items-center justify-center gap-2 text-xs font-bold text-gray-400">
-                  <CheckCircle2 className="w-4 h-4 text-mint-fresh" /> Garansi 30 Hari Uang Kembali
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-16 pt-16 border-t border-gray-100 text-center">
-              <p className="text-gray-500 mb-8 max-w-xl mx-auto">Ingin konsultasi lebih detail mengenai hasil skor kamu dengan Behel Care Consultant kami?</p>
-              <a href="https://wa.me/6285157626264?text=Halo%20Noufresh,%20skor%20assessment%20saya%2068.%20Bisa%20bantu%20jelaskan?" className="inline-flex items-center gap-3 px-10 py-5 bg-[#25D366] text-white rounded-full font-bold shadow-xl shadow-green-500/20 hover:scale-105 transition-all">
-                <MessageCircle className="w-6 h-6 fill-current" /> Konsultasi WhatsApp Sekarang
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </main>

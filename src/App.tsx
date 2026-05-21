@@ -8,6 +8,7 @@ import Program from './pages/Program';
 import Consultation from './pages/Consultation';
 import About from './pages/About';
 import Assessment from './pages/Assessment';
+import AssessmentResult from './pages/AssessmentResult';
 import Checkout from './pages/Checkout';
 import WhatsAppButton from './components/WhatsAppButton';
 import AdminApp from './admin/AdminApp';
@@ -18,6 +19,34 @@ function ScrollToTop() {
     window.scrollTo(0, 0);
   }, [pathname]);
   return null;
+}
+
+function AppContent() {
+  const location = useLocation();
+  const isResultPage = location.pathname === '/assessment/result';
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      {!isResultPage && <Navbar />}
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/program" element={<Program />} />
+          <Route path="/consultation" element={<Consultation />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/assessment" element={<Assessment />} />
+          <Route path="/assessment/result" element={<AssessmentResult />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout/:tier" element={<Checkout />} />
+          {/* Fallback to Home */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </div>
+      {!isResultPage && <Footer />}
+      {!isResultPage && <WhatsAppButton />}
+    </div>
+  );
 }
 
 export default function App() {
@@ -34,25 +63,8 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <div className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/program" element={<Program />} />
-            <Route path="/consultation" element={<Consultation />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/assessment" element={<Assessment />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/checkout/:tier" element={<Checkout />} />
-            {/* Fallback to Home */}
-            <Route path="*" element={<Home />} />
-          </Routes>
-        </div>
-        <Footer />
-        <WhatsAppButton />
-      </div>
+      <AppContent />
     </Router>
   );
 }
+
