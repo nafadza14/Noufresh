@@ -103,8 +103,8 @@ export default function Checkout() {
     }
 
     try {
-      // Call backend to get Midtrans Snap token
-      const response = await fetch('/api/midtrans/create-transaction', {
+      // Call backend to get Duitku reference
+      const response = await fetch('/api/duitku/create-transaction', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -133,26 +133,26 @@ export default function Checkout() {
 
       const data = await response.json();
 
-      if (!data.token) {
-        throw new Error(data.error || 'Token tidak diterima dari server');
+      if (!data.reference) {
+        throw new Error(data.error || 'Reference ID tidak diterima dari server');
       }
 
       setIsSubmitting(false);
 
-      // Trigger Midtrans Snap Popup
-      (window as any).snap.pay(data.token, {
-        onSuccess: async function(result: any) {
+      // Trigger Duitku Pop Popup
+      (window as any).checkout.process(data.reference, {
+        successEvent: async function(result: any) {
           // Update order status
           await supabase.from('orders').update({ status: 'Diproses' }).eq('id', orderId);
           window.location.href = '/checkout/complete';
         },
-        onPending: async function(result: any) {
+        pendingEvent: async function(result: any) {
           window.location.href = '/checkout/complete';
         },
-        onError: function(result: any) {
+        errorEvent: function(result: any) {
           alert('Pembayaran gagal!');
         },
-        onClose: function() {
+        closeEvent: function() {
           alert('Anda menutup popup sebelum menyelesaikan pembayaran');
         }
       });

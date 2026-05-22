@@ -2,6 +2,7 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import crypto from 'crypto';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,7 +37,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  if (req.method === 'POST' && req.url === '/api/midtrans/create-transaction') {
+  if (req.method === 'POST' && req.url === '/api/duitku/create-transaction') {
     let body = '';
     req.on('data', chunk => {
       body += chunk;
@@ -44,46 +45,93 @@ const server = http.createServer(async (req, res) => {
     req.on('end', async () => {
       try {
         const data = JSON.parse(body);
-        const serverKey = env.MIDTRANS_SERVER_KEY || process.env.MIDTRANS_SERVER_KEY;
+        const merchantCode = env.DUITKU_MERCHANT_CODE || process.env.DUITKU_MERCHANT_CODE || 'DS30915';
+        const apiKey = env.DUITKU_API_KEY || process.env.DUITKU_API_KEY || 'd4413f3c2a676093c87f4b681456590d';
         
-        if (!serverKey) {
-          throw new Error('MIDTRANS_SERVER_KEY is missing from environment');
+        if (!merchantCode || !apiKey) {
+          throw new Error('DUITKU_MERCHANT_CODE or DUITKU_API_KEY is missing');
         }
 
-        const serverKeyBase64 = Buffer.from(serverKey + ':').toString('base64');
-        const isProduction = !serverKey.startsWith('SB-');
-        const midtransUrl = isProduction
-          ? 'https://app.midtrans.com/snap/v1/transactions'
-          : 'https://app.sandbox.midtrans.com/snap/v1/transactions';
+        const timestamp = Date.now().toString();
+        const signature = crypto
+          .createHash('sha256')
+          .update(merchantCode + timestamp + apiKey)
+          .digest('hex');
 
-        const parameter = {
-          transaction_details: {
-            order_id: data.order_id,
-            gross_amount: Math.round(data.gross_amount)
+        const paymentAmount = Math.round(data.gross_amount);
+        
+        // Map customer details for Duitku
+        const customerDetail = {
+          firstName: data.customer_details?.first_name || 'Customer',
+          lastName: data.customer_details?.last_name || '',
+          email: data.customer_details?.email || 'no-email@example.com',
+          phoneNumber: data.customer_details?.phone || '',
+          billingAddress: {
+            firstName: data.customer_details?.first_name || 'Customer',
+            lastName: data.customer_details?.last_name || '',
+            address: data.customer_details?.billing_address?.address || '',
+            city: data.customer_details?.billing_address?.city || '',
+            postalCode: data.customer_details?.billing_address?.postal_code || '',
+            phone: data.customer_details?.phone || '',
+            countryCode: 'ID'
           },
-          credit_card: { secure: true },
-          customer_details: data.customer_details,
-          item_details: data.item_details
+          shippingAddress: {
+            firstName: data.customer_details?.first_name || 'Customer',
+            lastName: data.customer_details?.last_name || '',
+            address: data.customer_details?.billing_address?.address || '',
+            city: data.customer_details?.billing_address?.city || '',
+            postalCode: data.customer_details?.billing_address?.postal_code || '',
+            phone: data.customer_details?.phone || '',
+            countryCode: 'ID'
+          }
         };
 
-        const response = await fetch(midtransUrl, {
+        // Map item details
+        const itemDetails = (data.item_details || []).map(item => ({
+          name: item.name || 'Noufresh Item',
+          price: Math.round(item.price),
+          quantity: item.quantity || 1
+        }));
+
+        const parameter = {
+          merchantCode,
+          paymentAmount,
+          merchantOrderId: data.order_id,
+          productDetails: data.item_details?.[0]?.name || 'Noufresh Care Program',
+          email: data.customer_details?.email || 'no-email@example.com',
+          phoneNumber: data.customer_details?.phone || '',
+          itemDetails,
+          customerDetail,
+          callbackUrl: data.callback_url || 'https://noufreshcare.vercel.app/api/duitku/callback',
+          returnUrl: data.return_url || 'https://noufreshcare.vercel.app/checkout/complete',
+          expiryPeriod: 60
+        };
+
+        const response = await fetch('https://api-sandbox.duitku.com/api/merchant/createInvoice', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Authorization': `Basic ${serverKeyBase64}`
+            'x-duitku-signature': signature,
+            'x-duitku-timestamp': timestamp,
+            'x-duitku-merchantcode': merchantCode
           },
           body: JSON.stringify(parameter)
         });
 
         const result = await response.json();
 
-        if (!response.ok) {
-          throw new Error(result.error_messages ? result.error_messages.join(', ') : 'Midtrans API Error');
+        if (!response.ok || (result.statusCode && result.statusCode !== '00')) {
+          throw new Error(result.statusMessage || 'Duitku API Error');
         }
 
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ token: result.token, redirect_url: result.redirect_url }));
+        res.end(JSON.stringify({
+          reference: result.reference,
+          paymentUrl: result.paymentUrl,
+          statusCode: result.statusCode,
+          statusMessage: result.statusMessage
+        }));
       } catch (error) {
         console.error('Server Error:', error);
         res.writeHead(500, { 'Content-Type': 'application/json' });
