@@ -37,114 +37,75 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  if (req.method === 'POST' && req.url === '/api/duitku/create-transaction') {
+  // Helper to parse body
+  const parseBody = () => new Promise((resolve) => {
     let body = '';
-    req.on('data', chunk => {
-      body += chunk;
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      try { resolve(JSON.parse(body)); } catch { resolve({}); }
     });
-    req.on('end', async () => {
-      try {
-        const data = JSON.parse(body);
-        const merchantCode = env.DUITKU_MERCHANT_CODE || process.env.DUITKU_MERCHANT_CODE || 'DS30915';
-        const apiKey = env.DUITKU_API_KEY || process.env.DUITKU_API_KEY || 'd4413f3c2a676093c87f4b681456590d';
-        
-        if (!merchantCode || !apiKey) {
-          throw new Error('DUITKU_MERCHANT_CODE or DUITKU_API_KEY is missing');
-        }
+  });
 
-        const timestamp = Date.now().toString();
-        const signature = crypto
-          .createHash('sha256')
-          .update(merchantCode + timestamp + apiKey)
-          .digest('hex');
+  // Helper: minimal res adapter for Vercel-style handlers
+  const makeResAdapter = (nodeRes) => {
+    const headers = {};
+    return {
+      status: (code) => ({ 
+        json: (data) => { nodeRes.writeHead(code, { 'Content-Type': 'application/json', ...headers }); nodeRes.end(JSON.stringify(data)); },
+        end: () => { nodeRes.writeHead(code); nodeRes.end(); }
+      }),
+      setHeader: (k, v) => { headers[k] = v; nodeRes.setHeader(k, v); },
+      writeHead: (code, h) => nodeRes.writeHead(code, h || {}),
+      end: (data) => nodeRes.end(data)
+    };
+  };
 
-        const paymentAmount = Math.round(data.gross_amount);
-        
-        // Map customer details for Duitku
-        const customerDetail = {
-          firstName: data.customer_details?.first_name || 'Customer',
-          lastName: data.customer_details?.last_name || '',
-          email: data.customer_details?.email || 'no-email@example.com',
-          phoneNumber: data.customer_details?.phone || '',
-          billingAddress: {
-            firstName: data.customer_details?.first_name || 'Customer',
-            lastName: data.customer_details?.last_name || '',
-            address: data.customer_details?.billing_address?.address || '',
-            city: data.customer_details?.billing_address?.city || '',
-            postalCode: data.customer_details?.billing_address?.postal_code || '',
-            phone: data.customer_details?.phone || '',
-            countryCode: 'ID'
-          },
-          shippingAddress: {
-            firstName: data.customer_details?.first_name || 'Customer',
-            lastName: data.customer_details?.last_name || '',
-            address: data.customer_details?.billing_address?.address || '',
-            city: data.customer_details?.billing_address?.city || '',
-            postalCode: data.customer_details?.billing_address?.postal_code || '',
-            phone: data.customer_details?.phone || '',
-            countryCode: 'ID'
-          }
-        };
+  const url = req.url?.split('?')[0];
 
-        // Map item details
-        const itemDetails = (data.item_details || []).map(item => ({
-          name: item.name || 'Noufresh Item',
-          price: Math.round(item.price),
-          quantity: item.quantity || 1
-        }));
+  // Dynamic handler routing
+  const handlerRoutes = {
+    '/api/duitku/create-transaction': './api/duitku/create-transaction.js',
+    '/api/webhook/wa': './api/webhook/wa.js',
+    '/api/webhook/order-created': './api/webhook/order-created.js',
+    '/api/reminders/process': './api/reminders/process.js',
+    '/api/agent/reply': './api/agent/reply.js',
+    '/api/agent/config': './api/agent/config.js',
+  };
 
-        const parameter = {
-          merchantCode,
-          paymentAmount,
-          merchantOrderId: data.order_id,
-          productDetails: data.item_details?.[0]?.name || 'Noufresh Care Program',
-          email: data.customer_details?.email || 'no-email@example.com',
-          phoneNumber: data.customer_details?.phone || '',
-          itemDetails,
-          customerDetail,
-          callbackUrl: data.callback_url || 'https://noufreshcare.vercel.app/api/duitku/callback',
-          returnUrl: data.return_url || 'https://noufreshcare.vercel.app/checkout/complete',
-          expiryPeriod: 60
-        };
-
-        const response = await fetch('https://api-sandbox.duitku.com/api/merchant/createInvoice', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'x-duitku-signature': signature,
-            'x-duitku-timestamp': timestamp,
-            'x-duitku-merchantcode': merchantCode
-          },
-          body: JSON.stringify(parameter)
-        });
-
-        const result = await response.json();
-
-        if (!response.ok || (result.statusCode && result.statusCode !== '00')) {
-          throw new Error(result.statusMessage || 'Duitku API Error');
-        }
-
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({
-          reference: result.reference,
-          paymentUrl: result.paymentUrl,
-          statusCode: result.statusCode,
-          statusMessage: result.statusMessage
-        }));
-      } catch (error) {
-        console.error('Server Error:', error);
-        res.writeHead(500, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: error.message }));
-      }
-    });
-  } else {
-    res.writeHead(404);
-    res.end('Not Found');
+  if (handlerRoutes[url]) {
+    const body = await parseBody();
+    const reqAdapter = {
+      method: req.method,
+      url: req.url,
+      headers: req.headers,
+      body
+    };
+    const resAdapter = makeResAdapter(res);
+    try {
+      const mod = await import(handlerRoutes[url] + '?t=' + Date.now());
+      const handler = mod.default;
+      await handler(reqAdapter, resAdapter);
+    } catch (err) {
+      console.error(`[Server] Handler error for ${url}:`, err);
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: err.message }));
+    }
+    return;
   }
+
+  // 404 fallback
+  res.writeHead(404, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ error: 'Not Found', path: req.url }));
 });
 
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
-  console.log(`Zero-dependency Backend running on port ${PORT}`);
+  console.log(`[Dev Server] API Backend running on http://localhost:${PORT}`);
+  console.log('[Dev Server] Routes:');
+  console.log('  POST /api/duitku/create-transaction');
+  console.log('  POST /api/webhook/wa');
+  console.log('  POST /api/webhook/order-created');
+  console.log('  POST /api/reminders/process');
+  console.log('  POST /api/agent/reply');
+  console.log('  GET|PATCH /api/agent/config');
 });

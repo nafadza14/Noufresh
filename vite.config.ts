@@ -23,6 +23,18 @@ export default defineConfig(() => {
         '/api/duitku': {
           target: 'http://127.0.0.1:3001',
           changeOrigin: true
+        },
+        '/api/webhook': {
+          target: 'http://127.0.0.1:3001',
+          changeOrigin: true
+        },
+        '/api/agent': {
+          target: 'http://127.0.0.1:3001',
+          changeOrigin: true
+        },
+        '/api/reminders': {
+          target: 'http://127.0.0.1:3001',
+          changeOrigin: true
         }
       }
     },

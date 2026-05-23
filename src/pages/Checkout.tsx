@@ -61,6 +61,9 @@ const tiers: Record<string, any> = {
 export default function Checkout() {
   const { tier = 'complete' } = useParams();
   const product = tiers[tier] || tiers.complete;
+  const tierLabel = (['trial','starter','complete','pro'].includes(tier)
+    ? tier.charAt(0).toUpperCase() + tier.slice(1)
+    : 'Complete') as 'Trial' | 'Starter' | 'Complete' | 'Pro';
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -144,6 +147,26 @@ export default function Checkout() {
         successEvent: async function(result: any) {
           // Update order status
           await supabase.from('orders').update({ status: 'Diproses' }).eq('id', orderId);
+
+          // Normalisasi phone ke format 628xxx
+          let normalizedPhone = phone.replace(/\D/g, '');
+          if (normalizedPhone.startsWith('0')) normalizedPhone = '62' + normalizedPhone.slice(1);
+          if (!normalizedPhone.startsWith('62')) normalizedPhone = '62' + normalizedPhone;
+
+          // Trigger order-created webhook (fire and forget)
+          fetch('/api/webhook/order-created', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              order_code: orderId,
+              customer_name: name,
+              phone: normalizedPhone,
+              tier: tierLabel,
+              total: priceNumeric,
+              address: fullAddress
+            })
+          }).catch(err => console.warn('[Webhook] order-created error:', err));
+
           window.location.href = '/checkout/complete';
         },
         pendingEvent: async function(result: any) {

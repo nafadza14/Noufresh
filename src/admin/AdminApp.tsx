@@ -9,6 +9,9 @@ import CustomersAdmin from './CustomersAdmin';
 import SettingsAdmin from './SettingsAdmin';
 import AssessmentsAdmin from './AssessmentsAdmin';
 import PackagesAdmin from './PackagesAdmin';
+import WACenter from './WACenter';
+import RemindersAdmin from './RemindersAdmin';
+import AgentConfig from './AgentConfig';
 
 export default function AdminApp() {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -39,7 +42,11 @@ export default function AdminApp() {
         <Route path="/products" element={<ProductsAdmin />} />
         <Route path="/customers" element={<CustomersAdmin />} />
         <Route path="/settings" element={<SettingsAdmin />} />
-        {/* Fallbacks for other placeholder routes */}
+        {/* New AI Agent Routes */}
+        <Route path="/wa-center" element={<WACenter />} />
+        <Route path="/reminders" element={<RemindersAdmin />} />
+        <Route path="/agent-config" element={<AgentConfig />} />
+        {/* Fallback */}
         <Route path="*" element={<div className="p-8 text-center text-gray-500 font-medium">Halaman sedang dalam pengembangan</div>} />
       </Routes>
     </DashboardLayout>
