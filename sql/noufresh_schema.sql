@@ -112,47 +112,47 @@ ALTER TABLE agent_config ENABLE ROW LEVEL SECURITY;
 
 -- 9. RLS Policies — izinkan service_role (dipakai di API routes server-side)
 -- Conversations
-CREATE POLICY IF NOT EXISTS "service_role_all_conversations" ON conversations
+CREATE POLICY "service_role_all_conversations" ON conversations
   FOR ALL USING (auth.role() = 'service_role');
-CREATE POLICY IF NOT EXISTS "anon_read_conversations" ON conversations
+CREATE POLICY "anon_read_conversations" ON conversations
   FOR SELECT USING (true);
-CREATE POLICY IF NOT EXISTS "anon_insert_conversations" ON conversations
+CREATE POLICY "anon_insert_conversations" ON conversations
   FOR INSERT WITH CHECK (true);
 
 -- Customers
-CREATE POLICY IF NOT EXISTS "service_role_all_customers" ON customers
+CREATE POLICY "service_role_all_customers" ON customers
   FOR ALL USING (auth.role() = 'service_role');
-CREATE POLICY IF NOT EXISTS "anon_read_customers" ON customers
+CREATE POLICY "anon_read_customers" ON customers
   FOR SELECT USING (true);
-CREATE POLICY IF NOT EXISTS "anon_insert_customers" ON customers
+CREATE POLICY "anon_insert_customers" ON customers
   FOR INSERT WITH CHECK (true);
-CREATE POLICY IF NOT EXISTS "anon_update_customers" ON customers
+CREATE POLICY "anon_update_customers" ON customers
   FOR UPDATE USING (true);
 
 -- Orders
-CREATE POLICY IF NOT EXISTS "service_role_all_orders" ON orders
+CREATE POLICY "service_role_all_orders" ON orders
   FOR ALL USING (auth.role() = 'service_role');
-CREATE POLICY IF NOT EXISTS "anon_all_orders" ON orders
+CREATE POLICY "anon_all_orders" ON orders
   FOR ALL USING (true);
 
 -- Reminders
-CREATE POLICY IF NOT EXISTS "service_role_all_reminders" ON reminders
+CREATE POLICY "service_role_all_reminders" ON reminders
   FOR ALL USING (auth.role() = 'service_role');
-CREATE POLICY IF NOT EXISTS "anon_all_reminders" ON reminders
+CREATE POLICY "anon_all_reminders" ON reminders
   FOR ALL USING (true);
 
 -- Escalations
-CREATE POLICY IF NOT EXISTS "service_role_all_escalations" ON escalations
+CREATE POLICY "service_role_all_escalations" ON escalations
   FOR ALL USING (auth.role() = 'service_role');
-CREATE POLICY IF NOT EXISTS "anon_all_escalations" ON escalations
+CREATE POLICY "anon_all_escalations" ON escalations
   FOR ALL USING (true);
 
 -- Agent Config
-CREATE POLICY IF NOT EXISTS "service_role_all_agent_config" ON agent_config
+CREATE POLICY "service_role_all_agent_config" ON agent_config
   FOR ALL USING (auth.role() = 'service_role');
-CREATE POLICY IF NOT EXISTS "anon_read_agent_config" ON agent_config
+CREATE POLICY "anon_read_agent_config" ON agent_config
   FOR SELECT USING (true);
-CREATE POLICY IF NOT EXISTS "anon_update_agent_config" ON agent_config
+CREATE POLICY "anon_update_agent_config" ON agent_config
   FOR UPDATE USING (true);
 
 -- Indexes untuk performa query
